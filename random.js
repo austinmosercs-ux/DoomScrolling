@@ -290,7 +290,7 @@ function makeSponsoredPost() {
     url.className = "ad-url";
     url.textContent = brand.url;
 
-    const cta = document.createElement("span");
+    const cta = document.createElement("button");
     cta.className = "ad-cta";
     cta.textContent = "SHOP NOW ►";
 
@@ -359,7 +359,7 @@ function generateBatch() {
         }
 
         // 10% chance of sponsored post
-        if (Math.random() < 0.10) {
+        if (Math.random() < 0.1) {
             feed.appendChild(makeSponsoredPost());
         } else {
             feed.appendChild(makeRegularPost());
