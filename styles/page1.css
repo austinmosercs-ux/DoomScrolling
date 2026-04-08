@@ -37,7 +37,7 @@ body {
     background: var(--bg);
     border: 2px solid var(--white);
     padding: 14px;
-    margin-top: -2px;
+    margin-bottom: 4px;
 }
 
 /* Post header */
@@ -133,7 +133,6 @@ body {
 .post-card.sponsored {
     border-color: var(--red);
     position: relative;
-    z-index: 1;
 }
 
 .sponsored-badge {
@@ -215,7 +214,7 @@ body {
 .commentary.warning {
     border: 2px solid var(--red);
     padding: 10px;
-    margin-top: -2px;
+    margin-bottom: 4px;
     font-weight: 900;
     letter-spacing: 0.1em;
     font-size: 0.72rem;
