@@ -75,6 +75,49 @@ const usernamesArr = [
     "@nothingimportant", "@justchecking_", "@phonebrain2024", "@ugh.anyway"
 ];
 
+const randomCommentsArr = [
+    "no way this is real lmaooo",
+    "bro think he him 💀",
+    "this is the content i signed up for",
+    "why is this so accurate though",
+    "im literally crying rn",
+    "someone come get their mans",
+    "i showed this to my mom and she blocked me",
+    "this lives in my head rent free",
+    "not me watching this for the 5th time",
+    "the way i just spit out my coffee",
+    "tag someone who needs to see this",
+    "i feel personally attacked",
+    "this has no business being this funny",
+    "POV: you found the best post on the internet",
+    "why does nobody talk about this",
+    "ok but like actually though",
+    "i cant unsee this now thanks",
+    "this is criminally underrated",
+    "adding this to my collection",
+    "its giving main character energy",
+    "the algorithm really said here you go",
+    "i was today years old when i found out",
+    "somebody explain this to me like im five",
+    "bruh moment of the century",
+    "this is peak internet right here",
+    "how did i end up on this side of the feed",
+    "im supposed to be sleeping rn",
+    "one more post then im done i swear",
+    "this hit different at 3am",
+    "the fact that this exists is wild",
+    "im not even gonna ask how you found this",
+    "real ones know",
+    "who gave you permission to post this",
+    "this is so unhinged i love it",
+    "putting my phone down after this... jk no im not",
+    "the internet remains undefeated",
+    "screenshotted and sent to the group chat",
+    "this is my roman empire",
+    "tell me why i just watched this 8 times",
+    "honestly same"
+];
+
 const timeLabels = [
     "00:00:12 ago", "00:01:04 ago", "00:02:33 ago", "00:03:22 ago",
     "00:05:47 ago", "00:08:41 ago", "00:12:07 ago", "00:23:19 ago",
@@ -193,7 +236,10 @@ function makeRegularPost() {
     } else {
         const textDiv = document.createElement("div");
         textDiv.className = "post-text";
-        textDiv.textContent = pickUnique(sentencesArr, getRandomInt(2, 4)).join(" ");
+        const useRandom = Math.random() < 0.5;
+        textDiv.textContent = useRandom
+            ? randomPick(randomCommentsArr)
+            : pickUnique(sentencesArr, getRandomInt(2, 4)).join(" ");
         card.appendChild(textDiv);
     }
 
@@ -204,7 +250,10 @@ function makeRegularPost() {
         const strong = document.createElement("strong");
         strong.textContent = username;
         caption.appendChild(strong);
-        caption.appendChild(document.createTextNode(" " + pickUnique(sentencesArr, getRandomInt(1, 2)).join(" ")));
+        const capText = Math.random() < 0.5
+            ? randomPick(randomCommentsArr)
+            : pickUnique(sentencesArr, getRandomInt(1, 2)).join(" ");
+        caption.appendChild(document.createTextNode(" " + capText));
         card.appendChild(caption);
     }
 
