@@ -1,5 +1,4 @@
-/* Theme 1 — Dark / Yellow */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
 
 *,
 *::before,
@@ -10,35 +9,38 @@
 }
 
 :root {
-    --bg: #111;
-    --card: #1c1c1c;
-    --border: #2a2a2a;
-    --text: #f0f0f0;
-    --sub: #888;
-    --accent: #ffee58;
-    --accent-text: #111;
-    --btn-back-text: #888;
+    --bg: #0f0f0f;
+    --white: #fff;
+    --red: #ff3333;
+    --gray: #666;
+    --dark: #1a1a1a;
+    --font: 'IBM Plex Mono', monospace;
 }
 
 body {
     background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 0.95rem;
+    color: var(--white);
+    font-family: var(--font);
+    font-size: 0.9rem;
+    line-height: 1.6;
 }
 
-.app-shell {
+/* Feed container */
+.feed {
     max-width: 900px;
     margin: 0 auto;
-    padding: 12px 0 90px;
+    padding: 0 0 80px;
 }
 
+/* Post card */
 .post-card {
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    border: 2px solid var(--white);
     padding: 14px;
+    margin-bottom: -2px; /* collapse borders */
 }
 
+/* Post header */
 .post-header {
     display: flex;
     align-items: center;
@@ -47,15 +49,15 @@ body {
 }
 
 .avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: var(--accent-text);
+    width: 34px;
+    height: 34px;
+    border-radius: 0;
+    background: var(--red);
+    color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 0.82rem;
     flex-shrink: 0;
 }
@@ -65,104 +67,190 @@ body {
 }
 
 .post-username {
-    font-weight: 600;
-    font-size: 0.88rem;
-    color: var(--text);
+    font-weight: 800;
+    font-size: 0.78rem;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     display: block;
 }
 
 .post-time {
-    font-size: 0.72rem;
-    color: var(--sub);
+    font-size: 0.68rem;
+    color: var(--gray);
 }
 
 .post-dots {
-    color: var(--sub);
+    color: var(--gray);
     cursor: pointer;
     font-size: 1.1rem;
     letter-spacing: 0.05em;
 }
 
+/* Post content */
 .post-image {
     width: 100%;
     display: block;
+    border: 1px dashed var(--gray);
 }
 
 .post-text {
     padding: 4px 0 8px;
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     line-height: 1.65;
-    color: var(--text);
-}
-
-.engagement {
-    display: flex;
-    gap: 18px;
-    padding: 10px 0 4px;
-    font-size: 0.82rem;
-    color: var(--sub);
-}
-
-.eng-share {
-    margin-left: auto;
+    color: #ccc;
 }
 
 .post-caption {
     padding-top: 4px;
-    font-size: 0.84rem;
+    font-size: 0.82rem;
     line-height: 1.5;
-    color: var(--sub);
+    color: var(--gray);
 }
 
 .post-caption strong {
-    color: var(--text);
-    font-weight: 600;
+    color: var(--white);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
 }
 
+/* Engagement row */
+.engagement {
+    display: flex;
+    gap: 16px;
+    padding: 10px 0 4px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--red);
+}
+
+.eng-share {
+    margin-left: auto;
+    color: var(--gray);
+}
+
+/* Sponsored post overrides */
+.post-card.sponsored {
+    border-color: var(--red);
+    position: relative;
+}
+
+.sponsored-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--red);
+    color: var(--white);
+    font-size: 0.6rem;
+    font-weight: 900;
+    padding: 3px 8px;
+    letter-spacing: 0.15em;
+}
+
+.sponsored .avatar {
+    background: var(--white);
+    color: var(--bg);
+}
+
+.promoted-label {
+    font-size: 0.68rem;
+    color: var(--red);
+    font-weight: 700;
+}
+
+.ad-copy {
+    padding: 4px 0 8px;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #ccc;
+    text-transform: uppercase;
+}
+
+.ad-image {
+    width: 100%;
+    height: 120px;
+    background: var(--dark);
+    border: 1px dashed var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--red);
+    font-size: 0.72rem;
+}
+
+.ad-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.ad-url {
+    font-size: 0.68rem;
+    color: var(--gray);
+}
+
+.ad-cta {
+    border: 2px solid var(--red);
+    color: var(--red);
+    font-size: 0.72rem;
+    font-weight: 900;
+    padding: 6px 16px;
+    letter-spacing: 0.1em;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Commentary dividers */
+.commentary {
+    text-align: center;
+    font-size: 0.68rem;
+    color: var(--red);
+    letter-spacing: 0.2em;
+    padding: 12px 0;
+}
+
+.commentary.warning {
+    border: 2px solid var(--red);
+    padding: 10px;
+    margin: -2px 0;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+}
+
+/* Bottom nav */
 .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 12px 20px;
     background: var(--bg);
-    border-top: 1px solid var(--border);
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 10px 22px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.15s;
+    border-top: 2px solid var(--white);
 }
 
 .btn-back {
-    background: transparent;
-    color: var(--btn-back-text);
-    border: 1px solid var(--border);
+    font-family: var(--font);
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--gray);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 2px solid var(--gray);
+    padding: 8px 18px;
 }
 
 .btn-back:hover {
-    color: var(--text);
-    border-color: var(--sub);
+    color: var(--white);
+    border-color: var(--white);
 }
 
-.btn-next {
-    background: var(--accent);
-    color: var(--accent-text);
-}
-
-.btn-next:hover {
-    opacity: 0.88;
+/* Sentinel (invisible, triggers infinite scroll) */
+.sentinel {
+    height: 1px;
 }
