@@ -89,7 +89,9 @@ body {
 
 /* Post content */
 .post-image {
-    width: 100%;
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
     display: block;
     border: 1px dashed var(--gray);
 }
