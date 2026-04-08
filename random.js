@@ -300,3 +300,38 @@ function makeSponsoredPost() {
 
     return card;
 }
+
+/* ── Commentary System ────────────────────────────────────── */
+
+const startTime = Date.now();
+
+function getMinutesElapsed() {
+    return Math.floor((Date.now() - startTime) / 60000);
+}
+
+function makeCommentary(postCount) {
+    const el = document.createElement("div");
+    const minutes = getMinutesElapsed();
+    let template;
+
+    if (postCount <= 15) {
+        template = randomPick(commentarySubtle);
+        el.className = "commentary";
+    } else if (postCount <= 35) {
+        template = randomPick(commentaryAware);
+        el.className = "commentary";
+    } else {
+        template = randomPick(commentaryAggressive);
+        el.className = "commentary warning";
+    }
+
+    const text = template
+        .replace("{n}", String(postCount))
+        .replace("{t}", String(minutes || 1));
+
+    el.textContent = postCount <= 35
+        ? "━━━ " + text + " ━━━"
+        : text;
+
+    return el;
+}
