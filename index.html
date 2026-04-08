@@ -8,26 +8,19 @@
 </head>
 <body>
 
-    <div class="page">
-
-        <div class="top-label">pov: you're doing this right now</div>
-
-        <h1>doomscrolling</h1>
-
-        <div class="logos">
-            <div class="app-badge tiktok">
-                <img src="logo/tictok.png" alt="TikTok">
-                TikTok
-            </div>
-            <div class="app-badge instagram">
-                <img src="logo/instagram.png" alt="Instagram">
-                Instagram
-            </div>
-            <div class="app-badge youtube">
-                <img src="logo/youtube.png" alt="YouTube">
-                YouTube
-            </div>
+    <div class="hero">
+        <div class="logo-slideshow">
+            <img src="logo/tictok.png" alt="TikTok" class="slide active">
+            <img src="logo/instagram.png" alt="Instagram" class="slide">
+            <img src="logo/youtube.png" alt="YouTube" class="slide">
         </div>
+        <div class="hero-content">
+            <div class="top-label">pov: you're doing this right now</div>
+            <h1>doomscrolling</h1>
+        </div>
+    </div>
+
+    <div class="page">
 
         <div class="callout">
             "just gonna check my phone real quick"
@@ -94,10 +87,21 @@
 
         <div class="bottom-cta">
             <p class="cta-label">okay but wanna see what it actually looks like?</p>
-            <a href="random.html" class="next-btn">start scrolling →</a>
+            <a href="doomscrolling.html" class="next-btn">start scrolling →</a>
         </div>
 
     </div>
 
+    <script>
+        const slides = document.querySelectorAll('.logo-slideshow .slide');
+        if (slides.length > 0) {
+            let current = 0;
+            setInterval(() => {
+                slides[current].classList.remove('active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('active');
+            }, 1800);
+        }
+    </script>
 </body>
 </html>
