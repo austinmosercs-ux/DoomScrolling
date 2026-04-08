@@ -138,3 +138,165 @@ function formatLikes(n) {
     if (n >= 1000) return (n / 1000).toFixed(1) + "k";
     return String(n);
 }
+
+/* ── Post Generation ──────────────────────────────────────── */
+
+function makeRegularPost() {
+    const username = randomPick(usernamesArr);
+    const time = randomPick(timeLabels);
+    const likes = getRandomInt(200, 94000);
+    const comments = getRandomInt(10, 8000);
+    const isImage = Math.random() < 0.35;
+
+    const card = document.createElement("div");
+    card.className = "post-card";
+
+    // Header
+    const header = document.createElement("div");
+    header.className = "post-header";
+
+    const avatar = document.createElement("div");
+    avatar.className = "avatar";
+    avatar.textContent = username.charAt(1).toUpperCase();
+
+    const meta = document.createElement("div");
+    meta.className = "post-meta";
+
+    const nameSpan = document.createElement("span");
+    nameSpan.className = "post-username";
+    nameSpan.textContent = username;
+
+    const timeSpan = document.createElement("span");
+    timeSpan.className = "post-time";
+    timeSpan.textContent = time;
+
+    meta.appendChild(nameSpan);
+    meta.appendChild(timeSpan);
+
+    const dots = document.createElement("span");
+    dots.className = "post-dots";
+    dots.textContent = "•••";
+
+    header.appendChild(avatar);
+    header.appendChild(meta);
+    header.appendChild(dots);
+    card.appendChild(header);
+
+    // Content
+    if (isImage) {
+        const img = document.createElement("img");
+        img.className = "post-image";
+        img.src = randomPick(imageArr);
+        img.alt = "post";
+        img.onerror = function() { card.remove(); };
+        card.appendChild(img);
+    } else {
+        const textDiv = document.createElement("div");
+        textDiv.className = "post-text";
+        textDiv.textContent = pickUnique(sentencesArr, getRandomInt(2, 4)).join(" ");
+        card.appendChild(textDiv);
+    }
+
+    // Engagement
+    const engagement = document.createElement("div");
+    engagement.className = "engagement";
+
+    const likesSpan = document.createElement("span");
+    likesSpan.className = "eng-item";
+    likesSpan.textContent = "▲ " + formatLikes(likes);
+
+    const commentsSpan = document.createElement("span");
+    commentsSpan.className = "eng-item";
+    commentsSpan.textContent = "■ " + formatLikes(comments);
+
+    const shareSpan = document.createElement("span");
+    shareSpan.className = "eng-item eng-share";
+    shareSpan.textContent = "►";
+
+    engagement.appendChild(likesSpan);
+    engagement.appendChild(commentsSpan);
+    engagement.appendChild(shareSpan);
+    card.appendChild(engagement);
+
+    // Caption (only for image posts)
+    if (isImage) {
+        const caption = document.createElement("div");
+        caption.className = "post-caption";
+        const strong = document.createElement("strong");
+        strong.textContent = username;
+        caption.appendChild(strong);
+        caption.appendChild(document.createTextNode(" " + pickUnique(sentencesArr, getRandomInt(1, 2)).join(" ")));
+        card.appendChild(caption);
+    }
+
+    return card;
+}
+
+function makeSponsoredPost() {
+    const brand = randomPick(brandsArr);
+
+    const card = document.createElement("div");
+    card.className = "post-card sponsored";
+
+    // Sponsored badge
+    const badge = document.createElement("div");
+    badge.className = "sponsored-badge";
+    badge.textContent = "SPONSORED";
+    card.appendChild(badge);
+
+    // Header
+    const header = document.createElement("div");
+    header.className = "post-header";
+
+    const avatar = document.createElement("div");
+    avatar.className = "avatar";
+    avatar.textContent = brand.initials;
+
+    const meta = document.createElement("div");
+    meta.className = "post-meta";
+
+    const nameSpan = document.createElement("span");
+    nameSpan.className = "post-username";
+    nameSpan.textContent = brand.name;
+
+    const promoted = document.createElement("span");
+    promoted.className = "promoted-label";
+    promoted.textContent = "PROMOTED";
+
+    meta.appendChild(nameSpan);
+    meta.appendChild(promoted);
+
+    header.appendChild(avatar);
+    header.appendChild(meta);
+    card.appendChild(header);
+
+    // Ad copy
+    const copy = document.createElement("div");
+    copy.className = "ad-copy";
+    copy.textContent = brand.tagline;
+    card.appendChild(copy);
+
+    // Ad image placeholder
+    const adImg = document.createElement("div");
+    adImg.className = "ad-image";
+    adImg.textContent = "[AD IMAGE]";
+    card.appendChild(adImg);
+
+    // Footer
+    const footer = document.createElement("div");
+    footer.className = "ad-footer";
+
+    const url = document.createElement("span");
+    url.className = "ad-url";
+    url.textContent = brand.url;
+
+    const cta = document.createElement("span");
+    cta.className = "ad-cta";
+    cta.textContent = "SHOP NOW ►";
+
+    footer.appendChild(url);
+    footer.appendChild(cta);
+    card.appendChild(footer);
+
+    return card;
+}
