@@ -1,12 +1,4 @@
-const stylesArr = [
-    "styles/page1.css",
-    "styles/page2.css",
-    "styles/page3.css",
-    "styles/page4.css",
-    "styles/page5.css",
-    "styles/page6.css",
-    "styles/page7.css"
-];
+/* ── Data ─────────────────────────────────────────────────── */
 
 const imageArr = [
     "images/image1.png",  "images/image2.png",  "images/image3.png",
@@ -83,30 +75,47 @@ const usernamesArr = [
     "@nothingimportant", "@justchecking_", "@phonebrain2024", "@ugh.anyway"
 ];
 
-const nextBtnLabels = [
-    "keep scrolling ↓",
-    "just one more ↓",
-    "you can stop anytime ↓",
-    "last one i promise ↓",
-    "okay this is actually the last one ↓",
-    "fr this time ↓",
-    "lmaooo you're still here ↓",
-    "it's been how long?? ↓",
-    "no judgment ↓",
-    "we've all been there ↓",
-    "one more won't hurt ↓",
-    "you were just about to stop ↓"
-];
-
 const timeLabels = [
-    "just now", "1m ago", "2m ago", "3m ago", "5m ago",
-    "8m ago", "12m ago", "23m ago", "34m ago", "1h ago", "2h ago"
+    "00:00:12 ago", "00:01:04 ago", "00:02:33 ago", "00:03:22 ago",
+    "00:05:47 ago", "00:08:41 ago", "00:12:07 ago", "00:23:19 ago",
+    "00:34:55 ago", "01:02:11 ago", "02:14:08 ago"
 ];
 
-let nextBtnIndex = 0;
+const brandsArr = [
+    { name: "NOVAVEX LABS",      initials: "NVX", tagline: "ENGINEERED FOR PEAK PERFORMANCE.",           url: "novavex.com" },
+    { name: "DRIFT APPAREL",     initials: "DFT", tagline: "WEAR THE VOID.",                            url: "driftapparel.co" },
+    { name: "ZYNCO",             initials: "ZYN", tagline: "EVERYTHING. DELIVERED. NOW.",                url: "zynco.app" },
+    { name: "PULSEWAVE",         initials: "PLW", tagline: "SOUND BEYOND LIMITS.",                      url: "pulsewave.io" },
+    { name: "HEXACORE FITNESS",  initials: "HXC", tagline: "YOUR BODY IS SOFTWARE. UPDATE IT.",         url: "hexacore.fit" },
+    { name: "LUMIVOX",           initials: "LMV", tagline: "SEE DIFFERENT.",                            url: "lumivox.com" },
+    { name: "GRINDSET CO.",      initials: "GRD", tagline: "SLEEP IS OPTIONAL.",                        url: "grindset.co" },
+    { name: "VOIDBOX",           initials: "VBX", tagline: "SUBSCRIBE TO EVERYTHING.",                  url: "voidbox.com" }
+];
 
+const commentarySubtle = [
+    "POST {n} OF ∞"
+];
 
-function randomizer(arr) {
+const commentaryAware = [
+    "YOU'VE SEEN {n} POSTS. NONE OF THEM MATTERED.",
+    "POST {n}. STILL HERE?",
+    "YOU HAVE SCROLLED PAST {n} POSTS AND RETAINED NOTHING.",
+    "{n} POSTS DEEP. DO YOU EVEN REMEMBER THE FIRST ONE?",
+    "POST {n}. THE ALGORITHM IS PLEASED."
+];
+
+const commentaryAggressive = [
+    "⚠ YOU HAVE BEEN HERE FOR {t} MINUTES. THIS IS THE PROBLEM. ⚠",
+    "⚠ CLOSE THE TAB. GO OUTSIDE. DO LITERALLY ANYTHING ELSE. ⚠",
+    "⚠ THIS IS POST {n}. YOU WILL NOT REMEMBER A SINGLE ONE. ⚠",
+    "⚠ THE ALGORITHM THANKS YOU FOR YOUR TIME. ⚠",
+    "⚠ YOU JUST LOST ANOTHER MINUTE READING THIS WARNING AND KEPT SCROLLING ⚠",
+    "⚠ {t} MINUTES GONE. YOU ARE THE PRODUCT. ⚠"
+];
+
+/* ── Utilities ────────────────────────────────────────────── */
+
+function randomPick(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
@@ -115,7 +124,7 @@ function getRandomInt(min, max) {
 }
 
 function pickUnique(arr, count) {
-    const pool = [...arr];
+    const pool = arr.slice();
     const result = [];
     const take = Math.min(count, pool.length);
     for (let i = 0; i < take; i++) {
@@ -125,110 +134,7 @@ function pickUnique(arr, count) {
     return result;
 }
 
-function shuffle(arr) {
-    const a = [...arr];
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-}
-
 function formatLikes(n) {
-    if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
+    if (n >= 1000) return (n / 1000).toFixed(1) + "k";
     return String(n);
 }
-
-function makePostCard(post) {
-    const card = document.createElement('div');
-    card.className = 'post-card';
-
-    const likes    = getRandomInt(200, 94000);
-    const comments = getRandomInt(10, 8000);
-    const username = randomizer(usernamesArr);
-    const time     = randomizer(timeLabels);
-
-    if (post.type === 'image') {
-        card.innerHTML = `
-            <div class="post-header">
-                <div class="avatar">${username.charAt(1).toUpperCase()}</div>
-                <div class="post-meta">
-                    <span class="post-username">${username}</span>
-                    <span class="post-time">${time}</span>
-                </div>
-                <span class="post-dots">•••</span>
-            </div>
-            <img class="post-image" src="${post.src}" alt="post" onerror="this.closest('.post-card').remove()">
-            <div class="engagement">
-                <span class="eng-item">❤️ ${formatLikes(likes)}</span>
-                <span class="eng-item">💬 ${formatLikes(comments)}</span>
-                <span class="eng-item eng-share">↗</span>
-            </div>
-            <div class="post-caption"><strong>${username}</strong> ${post.caption}</div>
-        `;
-    } else {
-        card.innerHTML = `
-            <div class="post-header">
-                <div class="avatar">${username.charAt(1).toUpperCase()}</div>
-                <div class="post-meta">
-                    <span class="post-username">${username}</span>
-                    <span class="post-time">${time}</span>
-                </div>
-                <span class="post-dots">•••</span>
-            </div>
-            <div class="post-text">${post.text}</div>
-            <div class="engagement">
-                <span class="eng-item">❤️ ${formatLikes(likes)}</span>
-                <span class="eng-item">💬 ${formatLikes(comments)}</span>
-                <span class="eng-item eng-share">↗</span>
-            </div>
-        `;
-    }
-
-    return card;
-}
-
-function generatePage() {
-    // Cycle next-button label
-    const nextBtn = document.getElementById('next-btn');
-    nextBtnIndex = (nextBtnIndex + 1) % nextBtnLabels.length;
-    nextBtn.textContent = nextBtnLabels[nextBtnIndex];
-
-    // Apply random theme
-    document.getElementById('theme').href = randomizer(stylesArr);
-
-    // Build posts: 3 image posts + 7 text posts, shuffled
-    const posts = [];
-
-    const imageCount = getRandomInt(2, 4);
-    const textCount = getRandomInt(5, 9);
-
-    const selectedImages = pickUnique(imageArr, imageCount);
-    selectedImages.forEach(function(src) {
-        posts.push({
-            type: 'image',
-            src: src,
-            caption: pickUnique(sentencesArr, getRandomInt(1, 2)).join(' ')
-        });
-    });
-
-    for (let i = 0; i < textCount; i++) {
-        posts.push({
-            type: 'text',
-            text: pickUnique(sentencesArr, getRandomInt(2, 4)).join(' ')
-        });
-    }
-
-    const shuffled = shuffle(posts);
-
-    const feed = document.getElementById('feed');
-    feed.innerHTML = '';
-    shuffled.forEach(function(post) {
-        feed.appendChild(makePostCard(post));
-    });
-
-    window.scrollTo(0, 0);
-}
-
-
-generatePage();
