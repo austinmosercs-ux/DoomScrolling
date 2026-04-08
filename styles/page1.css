@@ -35,12 +35,9 @@ body {
 /* Post card */
 .post-card {
     background: var(--bg);
-    border-top: 1px solid var(--white);
+    border: 2px solid var(--white);
     padding: 14px;
-}
-
-.post-card:last-child {
-    border-bottom: 1px solid var(--white);
+    margin-top: -2px;
 }
 
 /* Post header */
@@ -134,8 +131,9 @@ body {
 
 /* Sponsored post overrides */
 .post-card.sponsored {
-    border-left: 3px solid var(--red);
+    border-color: var(--red);
     position: relative;
+    z-index: 1;
 }
 
 .sponsored-badge {
@@ -215,9 +213,9 @@ body {
 }
 
 .commentary.warning {
-    border-top: 1px solid var(--red);
-    border-bottom: 1px solid var(--red);
+    border: 2px solid var(--red);
     padding: 10px;
+    margin-top: -2px;
     font-weight: 900;
     letter-spacing: 0.1em;
     font-size: 0.72rem;
