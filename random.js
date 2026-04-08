@@ -382,5 +382,85 @@ const observer = new IntersectionObserver(function(entries) {
 
 observer.observe(sentinel);
 
-// Generate initial batch on page load
+// Generate first post as an image post, then start batches
+(function() {
+    const feed = document.getElementById("feed");
+    const username = randomPick(usernamesArr);
+    const time = randomPick(timeLabels);
+    const likes = getRandomInt(200, 94000);
+    const comments = getRandomInt(10, 8000);
+
+    const card = document.createElement("div");
+    card.className = "post-card";
+
+    const header = document.createElement("div");
+    header.className = "post-header";
+
+    const avatar = document.createElement("div");
+    avatar.className = "avatar";
+    avatar.textContent = username.charAt(1).toUpperCase();
+
+    const meta = document.createElement("div");
+    meta.className = "post-meta";
+
+    const nameSpan = document.createElement("span");
+    nameSpan.className = "post-username";
+    nameSpan.textContent = username;
+
+    const timeSpan = document.createElement("span");
+    timeSpan.className = "post-time";
+    timeSpan.textContent = time;
+
+    meta.appendChild(nameSpan);
+    meta.appendChild(timeSpan);
+
+    const dots = document.createElement("span");
+    dots.className = "post-dots";
+    dots.textContent = "•••";
+
+    header.appendChild(avatar);
+    header.appendChild(meta);
+    header.appendChild(dots);
+    card.appendChild(header);
+
+    const img = document.createElement("img");
+    img.className = "post-image";
+    img.src = randomPick(imageArr);
+    img.alt = "post";
+    img.onerror = function() { card.remove(); };
+    card.appendChild(img);
+
+    const caption = document.createElement("div");
+    caption.className = "post-caption";
+    const strong = document.createElement("strong");
+    strong.textContent = username;
+    caption.appendChild(strong);
+    caption.appendChild(document.createTextNode(" " + pickUnique(sentencesArr, getRandomInt(1, 2)).join(" ")));
+    card.appendChild(caption);
+
+    const engagement = document.createElement("div");
+    engagement.className = "engagement";
+
+    const likesSpan = document.createElement("span");
+    likesSpan.className = "eng-item";
+    likesSpan.textContent = "▲ " + formatLikes(likes);
+
+    const commentsSpan = document.createElement("span");
+    commentsSpan.className = "eng-item";
+    commentsSpan.textContent = "■ " + formatLikes(comments);
+
+    const shareSpan = document.createElement("span");
+    shareSpan.className = "eng-item eng-share";
+    shareSpan.textContent = "►";
+
+    engagement.appendChild(likesSpan);
+    engagement.appendChild(commentsSpan);
+    engagement.appendChild(shareSpan);
+    card.appendChild(engagement);
+
+    feed.appendChild(card);
+    totalPosts++;
+    postsSinceLastCommentary++;
+})();
+
 generateBatch();
