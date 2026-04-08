@@ -197,6 +197,17 @@ function makeRegularPost() {
         card.appendChild(textDiv);
     }
 
+    // Caption (only for image posts, before engagement)
+    if (isImage) {
+        const caption = document.createElement("div");
+        caption.className = "post-caption";
+        const strong = document.createElement("strong");
+        strong.textContent = username;
+        caption.appendChild(strong);
+        caption.appendChild(document.createTextNode(" " + pickUnique(sentencesArr, getRandomInt(1, 2)).join(" ")));
+        card.appendChild(caption);
+    }
+
     // Engagement
     const engagement = document.createElement("div");
     engagement.className = "engagement";
@@ -217,17 +228,6 @@ function makeRegularPost() {
     engagement.appendChild(commentsSpan);
     engagement.appendChild(shareSpan);
     card.appendChild(engagement);
-
-    // Caption (only for image posts)
-    if (isImage) {
-        const caption = document.createElement("div");
-        caption.className = "post-caption";
-        const strong = document.createElement("strong");
-        strong.textContent = username;
-        caption.appendChild(strong);
-        caption.appendChild(document.createTextNode(" " + pickUnique(sentencesArr, getRandomInt(1, 2)).join(" ")));
-        card.appendChild(caption);
-    }
 
     return card;
 }
