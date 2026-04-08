@@ -115,7 +115,27 @@ const randomCommentsArr = [
     "screenshotted and sent to the group chat",
     "this is my roman empire",
     "tell me why i just watched this 8 times",
-    "honestly same"
+    "honestly same",
+    "touch grass immediately",
+    "go outside challenge: impossible for you",
+    "your screen time report is crying rn",
+    "tell me you have no hobbies without telling me",
+    "this is why nobody texts you back",
+    "bro has never seen sunlight",
+    "least chronically online person",
+    "you posted this and thought it was a W?",
+    "ratio + you fell off + go outside",
+    "imagine having this much free time",
+    "this is what zero social interaction does to someone",
+    "log off. take a walk. drink water.",
+    "your phone called. it wants a break from you.",
+    "seek help immediately",
+    "this aint the flex you think it is",
+    "nobody asked but ok",
+    "you really sat down and typed this huh",
+    "the wifi password is go outside",
+    "your ancestors didnt survive for this",
+    "congrats this is the worst take ive seen today"
 ];
 
 const timeLabels = [
