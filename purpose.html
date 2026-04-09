@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>purpose</title>
+    <link rel="stylesheet" href="styles/shared.css">
+    <style>
+        .purpose-section {
+            max-width: 620px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        .purpose-block {
+            margin-bottom: 40px;
+        }
+        .purpose-block h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .purpose-block p {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--white);
+            margin-bottom: 1.2em;
+        }
+        .purpose-highlight {
+            background: var(--dark);
+            border-left: 3px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 4px;
+            margin-bottom: 40px;
+        }
+        .purpose-highlight p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--white);
+            margin: 0;
+        }
+        .page-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid #2a2a2a;
+        }
+        .page-links a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+            background: var(--dark);
+            border: 1px solid #2a2a2a;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--white);
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: border-color 0.15s;
+        }
+        .page-links a:hover {
+            border-color: var(--accent);
+        }
+        .page-links a span {
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="index.html" class="nav-link">home</a>
+        <a href="opinion.html" class="nav-link">my opinion</a>
+        <a href="purpose.html" class="nav-link active">purpose</a>
+        <a href="doomscrolling.html" class="nav-link">start scrolling</a>
+    </nav>
+
+    <div class="hero">
+        <div class="logo-slideshow">
+            <img src="logos/tictok.png" alt="TikTok" class="slide active">
+            <img src="logos/instagram.png" alt="Instagram" class="slide">
+            <img src="logos/youtube.png" alt="YouTube" class="slide">
+            <img src="logos/x.png" alt="x" class="slide">
+            <img src="logos/facebook.png" alt="facebook" class="slide">
+        </div>
+        <div class="hero-content">
+            <div class="top-label">why this exists</div>
+            <h1>purpose</h1>
+        </div>
+    </div>
+
+    <div class="purpose-section">
+
+        <div class="purpose-highlight">
+            <p>This site was built to make you think about the time you spend scrolling and what it actually costs you.</p>
+        </div>
+
+        <div class="purpose-block">
+            <h2>what this project is</h2>
+            <p>
+                This is a web project exploring the real impact of doomscrolling. It combines research-backed data,
+                personal perspective, and an interactive experience that puts you inside the feed itself. The goal
+                is not to lecture. It is to show you what the loop feels like from the inside and let the data speak
+                for itself.
+            </p>
+        </div>
+
+        <div class="purpose-block">
+            <h2>how it works</h2>
+            <p>
+                The home page presents the statistics. Real numbers from real studies about how much time we lose, what
+                it does to our mental health, our sleep, and our ability to focus. The opinion page is a first-person
+                take on what doomscrolling actually feels like day to day.
+            </p>
+            <p>
+                The scrolling page is the experience itself. It generates an infinite feed of posts, memes, ads, and
+                commentary that mirrors what a real social media feed looks like. The longer you scroll, the more
+                the site calls you out for it. A timer tracks how long you have been there. It is designed to make
+                you feel the pull and then question why you are still going.
+            </p>
+        </div>
+
+        <div class="purpose-block">
+            <h2>why it matters</h2>
+            <p>
+                Most people know doomscrolling is a problem but do not feel it until they are already deep in the feed.
+                Reading a stat is one thing. Watching a timer count your minutes while you keep scrolling anyway is
+                something else entirely. This project tries to close that gap between knowing and feeling.
+            </p>
+        </div>
+
+        <div class="page-links">
+            <a href="index.html">see the data <span>&rarr;</span></a>
+            <a href="opinion.html">read the opinion <span>&rarr;</span></a>
+            <a href="doomscrolling.html">start scrolling <span>&rarr;</span></a>
+        </div>
+
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.logo-slideshow .slide');
+        if (slides.length > 0) {
+            let current = 0;
+            setInterval(() => {
+                slides[current].classList.remove('active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('active');
+            }, 1800);
+        }
+    </script>
+</body>
+</html>

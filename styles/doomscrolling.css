@@ -1,28 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+@import url('base.css');
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* ── Doomscrolling Page Overrides ── */
+body {
+    font-size: 0.9rem;
+    line-height: 1.6;
 }
 
 :root {
-    --bg: #111;
-    --white: #ddd;
-    --accent: #8ab4f8;
     --gray: #777;
-    --dark: #1a1a1a;
-    --font: 'Inter', system-ui, sans-serif;
-}
-
-body {
-    background: var(--bg);
-    color: var(--white);
-    font-family: var(--font);
-    font-size: 0.9rem;
-    line-height: 1.6;
 }
 
 /* Feed container */
@@ -225,180 +210,65 @@ body {
     background: rgba(138, 180, 248, 0.05);
 }
 
-/* Bottom nav */
-.bottom-nav {
+/* Scroll timer */
+.scroll-timer {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    padding: 12px 20px;
-    background: var(--bg);
-    border-top: 1px solid #2a2a2a;
-}
-
-.btn-back {
-    font-family: var(--font);
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: var(--gray);
-    text-decoration: none;
-    border: 1px solid #333;
-    padding: 8px 16px;
-    border-radius: 4px;
-}
-
-.btn-back:hover {
-    color: var(--white);
-    border-color: var(--white);
-}
-
-/* Floating upload button */
-.fab-upload {
-    position: fixed;
-    right: 210px;
-    bottom: 130px;
-    background: var(--accent);
-    color: var(--bg);
-    border: none;
-    border-radius: 4px;
-    padding: 12px 20px;
-    font-family: var(--font);
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    z-index: 100;
-    letter-spacing: 0.03em;
-}
-
-.fab-upload:hover {
-    opacity: 0.85;
-}
-
-@media (max-width: 850px) {
-    .fab-upload {
-        right: 12px;
-        top: auto;
-        bottom: 70px;
-        transform: none;
-    }
-}
-
-/* Modal overlay */
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-.modal-card {
-    background: var(--dark);
+    top: 56px;
+    right: 16px;
+    z-index: 99;
+    background: rgba(17, 17, 17, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid #2a2a2a;
     border-radius: 4px;
-    padding: 28px;
-    width: 100%;
-    max-width: 400px;
-    position: relative;
-}
-
-.modal-close {
-    position: absolute;
-    top: 12px;
-    right: 14px;
-    background: none;
-    border: none;
-    color: var(--gray);
-    font-size: 1.2rem;
-    cursor: pointer;
+    padding: 8px 14px;
     font-family: var(--font);
-}
-
-.modal-close:hover {
-    color: var(--white);
-}
-
-.modal-title {
-    font-size: 1.1rem;
+    font-size: 0.72rem;
     font-weight: 600;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-.modal-body {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.file-label {
-    display: block;
-    padding: 12px;
-    border: 1px dashed #444;
-    border-radius: 4px;
-    text-align: center;
     color: var(--gray);
-    font-size: 0.85rem;
-    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: color 0.3s, border-color 0.3s;
 }
 
-.file-label:hover {
-    border-color: var(--accent);
+.scroll-timer.warn {
     color: var(--accent);
-}
-
-.file-name {
-    font-size: 0.78rem;
-    color: var(--accent);
-    min-height: 1em;
-}
-
-.caption-input {
-    background: var(--bg);
-    border: 1px solid #333;
-    border-radius: 4px;
-    padding: 10px 12px;
-    color: var(--white);
-    font-family: var(--font);
-    font-size: 0.85rem;
-}
-
-.caption-input:focus {
-    outline: none;
     border-color: var(--accent);
 }
 
-.upload-btn {
+.scroll-timer.danger {
+    color: #ff6b6b;
+    border-color: #ff6b6b;
+}
+
+/* Stop scrolling button */
+.stop-scrolling {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
     background: var(--accent);
     color: var(--bg);
     border: none;
     border-radius: 4px;
-    padding: 12px;
+    padding: 12px 28px;
     font-family: var(--font);
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 600;
+    letter-spacing: 0.03em;
     cursor: pointer;
-    letter-spacing: 0.05em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
 }
 
-.upload-btn:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
+.stop-scrolling.visible {
+    opacity: 1;
+    pointer-events: auto;
 }
 
-.upload-btn:not(:disabled):hover {
+.stop-scrolling:hover {
     opacity: 0.85;
-}
-
-.upload-error {
-    font-size: 0.78rem;
-    color: #ff6b6b;
-    min-height: 1em;
 }
 
 /* Sentinel (invisible, triggers infinite scroll) */

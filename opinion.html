@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my opinion</title>
+    <link rel="stylesheet" href="styles/shared.css">
+    <style>
+        .hero-quote {
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--gray);
+            font-style: italic;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        .hero-quote span {
+            display: block;
+            font-size: 0.85rem;
+            margin-top: 6px;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="index.html" class="nav-link">home</a>
+        <a href="opinion.html" class="nav-link active">my opinion</a>
+        <a href="purpose.html" class="nav-link">purpose</a>
+        <a href="doomscrolling.html" class="nav-link">start scrolling</a>
+    </nav>
+
+    <div class="hero">
+        <div class="logo-slideshow">
+            <img src="logos/tictok.png" alt="TikTok" class="slide active">
+            <img src="logos/instagram.png" alt="Instagram" class="slide">
+            <img src="logos/youtube.png" alt="YouTube" class="slide">
+            <img src="logos/x.png" alt="x" class="slide">
+            <img src="logos/facebook.png" alt="facebook" class="slide">
+        </div>
+        <div class="hero-content">
+            <h1>my opinion</h1>
+            <p class="hero-quote">"just gonna check my phone real quick"<span>— you, right before losing an hour</span></p>
+        </div>
+    </div>
+
+    <div class="page">
+
+        <div class="essay">
+
+            <p>
+                I honestly think doomscrolling is just a huge waste of time. You can start anywhere. In class, laying in bed,
+                waiting for something, or just checking your phone for a second. Then somehow an hour is gone and you do not
+                even know how it happened. Most of the time you do not notice it starting. It just kind of pulls you in. To me,
+                doomscrolling is constantly looking through negative or dramatic stuff online, even when you know it is not really
+                helping you. It is not always intentional either. Sometimes you are bored. Sometimes you are avoiding something.
+                Sometimes it is just automatic.
+            </p>
+
+            <p>
+                It feels addicting because apps are built to keep you there. TikTok, Instagram, Twitter, YouTube, they all have
+                endless feeds. And now even apps that did not used to have that kind of layout are adding it. There is no real
+                stopping point. The next post just loads. The next video just plays. You do not even have to press anything. On
+                top of that, there is always that feeling like you might miss something if you stop. Even if it is not important, it
+                feels important in the moment. That mix of endless content and curiosity makes it really easy to just keep going.
+            </p>
+
+            <div class="inline-meme">ngl this paragraph is literally you</div>
+
+            <p>
+                For me, doomscrolling usually ends with regret. I tell myself I am just taking a quick break from homework, but
+                that quick break turns into something way longer. At first it feels fine. Maybe even relaxing. But then it shifts.
+                I start feeling stressed or annoyed at myself for wasting time. It goes from fun to frustrating without me really
+                noticing when it changed. And I feel like a lot of people probably relate to that switch.
+            </p>
+
+            <p>
+                It definitely messes with my productivity. Even when the content is not that interesting, I keep scrolling because
+                maybe the next thing will be better. It completely breaks my focus. Then when I finally stop, it feels like my brain
+                needs a minute to reset before I can actually get back into working mode. And if that keeps happening every day, it
+                adds up. A few minutes here and there turns into hours over time.
+            </p>
+
+            <p>
+                Not everyone doomscrolls the same way. Some people get pulled into dramatic or negative content faster,
+                especially if they are already stressed. Other people can just close the app and move on. For me it kind of depends
+                on how I am feeling that day. Sometimes I can stop easily. Other times I just keep going. So I do not think it is
+                only about the apps. It is also about how you are feeling when you open them.
+            </p>
+
+            <p>
+                It is hard to stop because everything feels personalized. The app learns what you like and keeps showing you more
+                of it. So right when you are about to close it, something catches your attention again. It almost feels automatic
+                after a while. There is no real ending, no final page, nothing that signals you are done. The feed just keeps going.
+                And because of that, it always feels like there is one more thing worth seeing.
+            </p>
+
+            <p>
+                Doomscrolling feels like a cycle. You start because you are bored or avoiding something. You stay because it is
+                entertaining. You stop feeling guilty. Then the next day you do it again. It repeats, but it always feels slightly
+                different because the posts and images change. That is what makes it tricky. It feels new every time, but it is
+                really the same behavior over and over again.
+            </p>
+
+        </div>
+
+        <div class="bottom-cta">
+            <p class="cta-label">okay but wanna see what it actually looks like?</p>
+            <a href="doomscrolling.html" class="next-btn">start scrolling &rarr;</a>
+        </div>
+
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.logo-slideshow .slide');
+        if (slides.length > 0) {
+            let current = 0;
+            setInterval(() => {
+                slides[current].classList.remove('active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('active');
+            }, 1800);
+        }
+    </script>
+</body>
+</html>

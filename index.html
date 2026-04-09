@@ -4,95 +4,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>doomscrolling</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="styles/shared.css">
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
 
+    <nav class="top-nav">
+        <a href="index.html" class="nav-link active">home</a>
+        <a href="opinion.html" class="nav-link">my opinion</a>
+        <a href="purpose.html" class="nav-link">purpose</a>
+        <a href="doomscrolling.html" class="nav-link">start scrolling</a>
+    </nav>
+
     <div class="hero">
         <div class="logo-slideshow">
-            <img src="logo/tictok.png" alt="TikTok" class="slide active">
-            <img src="logo/instagram.png" alt="Instagram" class="slide">
-            <img src="logo/youtube.png" alt="YouTube" class="slide">
-            <img src="logo/x.png" alt="x" class="slide">
+            <img src="logos/tictok.png" alt="TikTok" class="slide active">
+            <img src="logos/instagram.png" alt="Instagram" class="slide">
+            <img src="logos/youtube.png" alt="YouTube" class="slide">
+            <img src="logos/x.png" alt="x" class="slide">
             <img src="logos/facebook.png" alt="facebook" class="slide">
         </div>
         <div class="hero-content">
-            <div class="top-label">pov: you're doing this right now</div>
+            <div class="top-label">what the data says</div>
             <h1>doomscrolling</h1>
         </div>
     </div>
 
-    <div class="page">
+    <div class="page-container">
 
-        <div class="callout">
-            "just gonna check my phone real quick"
-            <span class="callout-sub">— you, right before losing an hour</span>
+        <!-- Section 1: The Wake-Up Call -->
+        <div class="hero-section">
+            <div class="hero-stat">The average person spends 2 hours and 23 minutes on social media every day.</div>
+            <div class="hero-sub">That's 36 full days a year. Scrolling.</div>
+
+            <div class="stat-block">
+                <div class="stat-text">Americans check their phones 96 times a day.</div>
+                <div class="stat-source"><a href="https://www.asurion.com/connect/tech-blog/tech-usage/" target="_blank" rel="noopener">Asurion (2019)</a></div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-text">50% of adults report feeling addicted to their phones.</div>
+                <div class="stat-source"><a href="https://www.commonsensemedia.org/research/technology-addiction-concern-controversy-and-finding-balance" target="_blank" rel="noopener">Common Sense Media</a></div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-text">Screen time increased 76% during the pandemic.</div>
+                <div class="stat-source"><a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2785493" target="_blank" rel="noopener">JAMA Network Open (2021)</a></div>
+            </div>
         </div>
 
-        <div class="essay">
+        <!-- Section 2: The Real Cost -->
+        <div class="cost-section">
+            <div class="section-title">The Real Cost</div>
 
-            <p>
-                I honestly think doomscrolling is just a huge waste of time. You can start anywhere. In class, laying in bed,
-                waiting for something, or just checking your phone for a second. Then somehow an hour is gone and you do not
-                even know how it happened. Most of the time you do not notice it starting. It just kind of pulls you in. To me,
-                doomscrolling is constantly looking through negative or dramatic stuff online, even when you know it is not really
-                helping you. It is not always intentional either. Sometimes you are bored. Sometimes you are avoiding something.
-                Sometimes it is just automatic.
-            </p>
+            <div class="sub-topic">Mental Health</div>
+            <div class="research-block">
+                <div class="research-text">"Passive social media use is linked to increased depression and loneliness."</div>
+                <div class="research-detail">Scrolling without interacting makes you feel worse, not better.</div>
+                <div class="research-source"><a href="https://doi.org/10.1037/xge0000600" target="_blank" rel="noopener">Journal of Experimental Psychology (2019)</a></div>
+            </div>
+            <div class="research-block">
+                <div class="research-text">"Limiting social media to 30 min/day led to significant reductions in anxiety and FOMO."</div>
+                <div class="research-detail">Less time on feeds = measurably less stress.</div>
+                <div class="research-source"><a href="https://guilfordjournals.com/doi/10.1521/jscp.2018.37.10.751" target="_blank" rel="noopener">Journal of Social and Clinical Psychology (2018)</a></div>
+            </div>
 
-            <p>
-                It feels addicting because apps are built to keep you there. TikTok, Instagram, Twitter, YouTube, they all have
-                endless feeds. And now even apps that did not used to have that kind of layout are adding it. There is no real
-                stopping point. The next post just loads. The next video just plays. You do not even have to press anything. On
-                top of that, there is always that feeling like you might miss something if you stop. Even if it is not important, it
-                feels important in the moment. That mix of endless content and curiosity makes it really easy to just keep going.
-            </p>
+            <div class="sub-topic">Sleep</div>
+            <div class="research-block">
+                <div class="research-text">"Blue light exposure before bed suppresses melatonin by up to 50%."</div>
+                <div class="research-detail">Your phone is literally keeping you awake.</div>
+                <div class="research-source"><a href="https://www.health.harvard.edu/staying-healthy/blue-light-has-a-dark-side" target="_blank" rel="noopener">Harvard Health</a></div>
+            </div>
+            <div class="research-block">
+                <div class="research-text">"People who doomscroll before sleep report worse sleep quality and more fatigue."</div>
+                <div class="research-detail">The last thing you see before bed shapes how you rest.</div>
+                <div class="research-source"><a href="https://doi.org/10.1080/10410236.2021.1987612" target="_blank" rel="noopener">Health Communication (2021)</a></div>
+            </div>
 
-            <div class="inline-meme">ngl this paragraph is literally you</div>
-
-            <p>
-                For me, doomscrolling usually ends with regret. I tell myself I am just taking a quick break from homework, but
-                that quick break turns into something way longer. At first it feels fine. Maybe even relaxing. But then it shifts.
-                I start feeling stressed or annoyed at myself for wasting time. It goes from fun to frustrating without me really
-                noticing when it changed. And I feel like a lot of people probably relate to that switch.
-            </p>
-
-            <p>
-                It definitely messes with my productivity. Even when the content is not that interesting, I keep scrolling because
-                maybe the next thing will be better. It completely breaks my focus. Then when I finally stop, it feels like my brain
-                needs a minute to reset before I can actually get back into working mode. And if that keeps happening every day, it
-                adds up. A few minutes here and there turns into hours over time.
-            </p>
-
-            <p>
-                Not everyone doomscrolls the same way. Some people get pulled into dramatic or negative content faster,
-                especially if they are already stressed. Other people can just close the app and move on. For me it kind of depends
-                on how I am feeling that day. Sometimes I can stop easily. Other times I just keep going. So I do not think it is
-                only about the apps. It is also about how you are feeling when you open them.
-            </p>
-
-            <p>
-                It is hard to stop because everything feels personalized. The app learns what you like and keeps showing you more
-                of it. So right when you are about to close it, something catches your attention again. It almost feels automatic
-                after a while. There is no real ending, no final page, nothing that signals you are done. The feed just keeps going.
-                And because of that, it always feels like there is one more thing worth seeing.
-            </p>
-
-            <p>
-                Doomscrolling feels like a cycle. You start because you are bored or avoiding something. You stay because it is
-                entertaining. You stop feeling guilty. Then the next day you do it again. It repeats, but it always feels slightly
-                different because the posts and images change. That is what makes it tricky. It feels new every time, but it is
-                really the same behavior over and over again.
-            </p>
-
+            <div class="sub-topic">Attention Span</div>
+            <div class="research-block">
+                <div class="research-text">"The average human attention span has dropped from 12 seconds to 8 seconds."</div>
+                <div class="research-detail">That is less than a goldfish.</div>
+                <div class="research-source"><a href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener">Microsoft Canada (2015)</a></div>
+            </div>
+            <div class="research-block">
+                <div class="research-text">"Heavy media multitaskers perform worse on task-switching tests."</div>
+                <div class="research-detail">More tabs open does not mean more getting done.</div>
+                <div class="research-source"><a href="https://doi.org/10.1073/pnas.0903620106" target="_blank" rel="noopener">Stanford / PNAS (2009)</a></div>
+            </div>
         </div>
 
-        <div class="bottom-cta">
-            <p class="cta-label">okay but wanna see what it actually looks like?</p>
-            <a href="doomscrolling.html" class="next-btn">start scrolling →</a>
+        <!-- Section 3: Take Back Your Time -->
+        <div class="reframe-header">In 2 hours and 23 minutes you could:</div>
+        <ul class="reframe-list">
+            <li>Learn a new song on an instrument</li>
+            <li>Run a 5K</li>
+            <li>Read 80+ pages of a book</li>
+            <li>Cook a full meal from scratch</li>
+            <li>Have an actual conversation with someone</li>
+            <li>Start a side project</li>
+            <li>Get a full workout in</li>
+            <li>Write something that matters</li>
+        </ul>
+
+        <div class="closing-statement">The feed never ends. But you can.</div>
+
+        <!-- Sources -->
+        <div class="sources-section">
+            <div class="sources-badge">SOURCES</div>
+            <ol class="sources-list">
+                <li><a href="https://datareportal.com/reports/digital-2024-global-overview-report" target="_blank" rel="noopener">DataReportal — "Digital 2024: Global Overview Report"</a></li>
+                <li><a href="https://www.asurion.com/connect/tech-blog/tech-usage/" target="_blank" rel="noopener">Asurion — "Americans Check Their Phones 96 Times a Day" (2019)</a></li>
+                <li><a href="https://www.commonsensemedia.org/research/technology-addiction-concern-controversy-and-finding-balance" target="_blank" rel="noopener">Common Sense Media — "Technology Addiction: Concern, Controversy, and Finding Balance"</a></li>
+                <li><a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2785493" target="_blank" rel="noopener">JAMA Network Open — "Screen Time During COVID-19" (2021)</a></li>
+                <li><a href="https://doi.org/10.1037/xge0000600" target="_blank" rel="noopener">Journal of Experimental Psychology — "Facebook Usage and Depressive Symptoms" (2019)</a></li>
+                <li><a href="https://guilfordjournals.com/doi/10.1521/jscp.2018.37.10.751" target="_blank" rel="noopener">Journal of Social and Clinical Psychology — "No More FOMO" (2018)</a></li>
+                <li><a href="https://www.health.harvard.edu/staying-healthy/blue-light-has-a-dark-side" target="_blank" rel="noopener">Harvard Health — "Blue Light Has a Dark Side"</a></li>
+                <li><a href="https://doi.org/10.1080/10410236.2021.1987612" target="_blank" rel="noopener">Health Communication — "Doomscrolling and Sleep Quality" (2021)</a></li>
+                <li><a href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener">Microsoft Canada — "Attention Spans" (2015)</a></li>
+                <li><a href="https://doi.org/10.1073/pnas.0903620106" target="_blank" rel="noopener">Stanford / PNAS — "Cognitive Control in Media Multitaskers" (2009)</a></li>
+            </ol>
         </div>
 
     </div>
+
 
     <script>
         const slides = document.querySelectorAll('.logo-slideshow .slide');

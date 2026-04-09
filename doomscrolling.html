@@ -7,18 +7,59 @@
     <link rel="stylesheet" href="styles/doomscrolling.css">
 </head>
 <body>
+    <nav class="top-nav">
+        <a href="index.html" class="nav-link">home</a>
+        <a href="opinion.html" class="nav-link">my opinion</a>
+        <a href="purpose.html" class="nav-link">purpose</a>
+        <a href="doomscrolling.html" class="nav-link active">start scrolling</a>
+    </nav>
+
+    <div class="scroll-timer" id="scroll-timer">00:00</div>
+
     <div class="feed" id="feed"></div>
     <div class="sentinel" id="sentinel"></div>
 
-    <nav class="bottom-nav">
-        <a href="index.html" class="btn-back">← HOME</a>
-        <a href="endgoal.html" class="btn-back" style="margin-left: auto;">THE END GOAL →</a>
-    </nav>
+    <button class="stop-scrolling" id="stop-btn">stop scrolling</button>
 
     <script src="js/data.js"></script>
     <script src="js/meme-api.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/posts.js"></script>
     <script src="js/feed.js"></script>
+    <script>
+        // Scroll timer
+        const timerEl = document.getElementById('scroll-timer');
+        const timerStart = Date.now();
+
+        setInterval(() => {
+            const elapsed = Math.floor((Date.now() - timerStart) / 1000);
+            const mins = String(Math.floor(elapsed / 60)).padStart(2, '0');
+            const secs = String(elapsed % 60).padStart(2, '0');
+            timerEl.textContent = mins + ':' + secs;
+
+            // Change color based on time spent
+            if (elapsed >= 300) {
+                timerEl.className = 'scroll-timer danger';
+            } else if (elapsed >= 120) {
+                timerEl.className = 'scroll-timer warn';
+            }
+        }, 1000);
+
+        // Stop scrolling button — appears after 20 posts
+        const stopBtn = document.getElementById('stop-btn');
+        let stopShown = false;
+
+        const checkPosts = setInterval(() => {
+            if (totalPosts >= 20 && !stopShown) {
+                stopBtn.classList.add('visible');
+                stopShown = true;
+                clearInterval(checkPosts);
+            }
+        }, 1000);
+
+        stopBtn.addEventListener('click', () => {
+            globalThis.location.href = 'index.html';
+        });
+    </script>
 </body>
 </html>
