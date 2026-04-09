@@ -1,15 +1,14 @@
 (function () {
-    var modal = document.getElementById("upload-modal");
-    var openBtn = document.getElementById("add-meme-btn");
-    var closeBtn = document.getElementById("modal-close");
-    var fileInput = document.getElementById("meme-file");
-    var fileLabel = document.getElementById("file-label");
-    var fileNameEl = document.getElementById("file-name");
-    var captionInput = document.getElementById("meme-caption");
-    var uploadBtn = document.getElementById("upload-btn");
-    var errorEl = document.getElementById("upload-error");
+    const modal = document.getElementById("upload-modal");
+    const openBtn = document.getElementById("add-meme-btn");
+    const closeBtn = document.getElementById("modal-close");
+    const fileInput = document.getElementById("meme-file");
+    const fileNameEl = document.getElementById("file-name");
+    const captionInput = document.getElementById("meme-caption");
+    const uploadBtn = document.getElementById("upload-btn");
+    const errorEl = document.getElementById("upload-error");
 
-    var MAX_SIZE = 5 * 1024 * 1024; // 5MB
+    let MAX_SIZE = 5 * 1024 * 1024; // 5MB
 
     // Open modal
     openBtn.addEventListener("click", function () {
@@ -35,7 +34,7 @@
 
     // File selection
     fileInput.addEventListener("change", function () {
-        var file = fileInput.files[0];
+        let file = fileInput.files[0];
         if (!file) {
             fileNameEl.textContent = "";
             uploadBtn.disabled = true;
@@ -55,16 +54,16 @@
 
     // Upload
     uploadBtn.addEventListener("click", function () {
-        var file = fileInput.files[0];
+        let file = fileInput.files[0];
         if (!file) return;
 
         uploadBtn.disabled = true;
         uploadBtn.textContent = "UPLOADING...";
         errorEl.textContent = "";
 
-        var ext = file.name.split(".").pop().toLowerCase();
-        var fileName = Date.now() + "_" + Math.random().toString(36).substring(2, 8) + "." + ext;
-        var ref = storage.ref("memes/" + fileName);
+        let ext = file.name.split(".").pop().toLowerCase();
+        let fileName = Date.now() + "_" + Math.random().toString(36).substring(2, 8) + "." + ext;
+        let ref = storage.ref("memes/" + fileName);
 
         ref.put(file).then(function (snapshot) {
             return snapshot.ref.getDownloadURL();
@@ -76,8 +75,8 @@
             });
         }).then(function (docRef) {
             // Insert the new meme into the feed at the top
-            var feed = document.getElementById("feed");
-            var card = makeUserMemePost({
+            let feed = document.getElementById("feed");
+            let card = makeUserMemePost({
                 imageUrl: URL.createObjectURL(file),
                 caption: captionInput.value.trim()
             });
