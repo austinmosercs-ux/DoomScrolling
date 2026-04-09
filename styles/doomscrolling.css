@@ -254,18 +254,35 @@ body {
     border-color: var(--white);
 }
 
-/* Upload button */
-.btn-upload {
+/* Floating upload button */
+.fab-upload {
+    position: fixed;
+    right: 210px;
+    bottom: 130px;
     background: var(--accent);
     color: var(--bg);
-    border-color: var(--accent);
+    border: none;
+    border-radius: 4px;
+    padding: 12px 20px;
+    font-family: var(--font);
+    font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
-    font-family: var(--font);
+    z-index: 100;
+    letter-spacing: 0.03em;
 }
 
-.btn-upload:hover {
+.fab-upload:hover {
     opacity: 0.85;
+}
+
+@media (max-width: 850px) {
+    .fab-upload {
+        right: 12px;
+        top: auto;
+        bottom: 70px;
+        transform: none;
+    }
 }
 
 /* Modal overlay */
