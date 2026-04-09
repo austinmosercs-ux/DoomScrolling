@@ -370,6 +370,55 @@ function makeSponsoredPost() {
     return card;
 }
 
+/* ── User Meme Post ──────────────────────────────────────── */
+
+function makeUserMemePost(meme) {
+    var card = document.createElement("div");
+    card.className = "post-card";
+
+    // Header
+    var header = document.createElement("div");
+    header.className = "post-header";
+
+    var avatar = document.createElement("div");
+    avatar.className = "avatar";
+    avatar.textContent = "U";
+
+    var meta = document.createElement("div");
+    meta.className = "post-meta";
+
+    var nameSpan = document.createElement("span");
+    nameSpan.className = "post-username";
+    nameSpan.textContent = "user upload";
+
+    meta.appendChild(nameSpan);
+
+    header.appendChild(avatar);
+    header.appendChild(meta);
+    card.appendChild(header);
+
+    // Image
+    var img = document.createElement("img");
+    img.className = "post-image";
+    img.src = meme.imageUrl;
+    img.alt = "user meme";
+    img.onerror = function () { card.remove(); };
+    card.appendChild(img);
+
+    // Caption
+    if (meme.caption) {
+        var caption = document.createElement("div");
+        caption.className = "post-caption";
+        var strong = document.createElement("strong");
+        strong.textContent = "user upload";
+        caption.appendChild(strong);
+        caption.appendChild(document.createTextNode(" " + meme.caption));
+        card.appendChild(caption);
+    }
+
+    return card;
+}
+
 /* ── Commentary System ────────────────────────────────────── */
 
 const startTime = Date.now();
@@ -533,3 +582,41 @@ observer.observe(sentinel);
 })();
 
 generateBatch();
+
+/* ── User Meme Integration ───────────────────────────────── */
+
+let userMemes = [];
+let userMemeIndex = 0;
+
+function loadUserMemes() {
+    if (typeof db === "undefined") return;
+
+    db.collection("memes")
+        .orderBy("timestamp", "desc")
+        .limit(20)
+        .get()
+        .then(function (snapshot) {
+            snapshot.forEach(function (doc) {
+                userMemes.push(doc.data());
+            });
+        })
+        .catch(function () {
+            // Firebase not configured yet — silently skip
+        });
+}
+
+loadUserMemes();
+
+// Patch generateBatch to mix in user memes
+const _originalGenerateBatch = generateBatch;
+generateBatch = function () {
+    _originalGenerateBatch();
+
+    if (userMemeIndex < userMemes.length && Math.random() < 0.2) {
+        const feed = document.getElementById("feed");
+        const sentinel = document.getElementById("sentinel");
+        const card = makeUserMemePost(userMemes[userMemeIndex]);
+        feed.insertBefore(card, sentinel);
+        userMemeIndex++;
+    }
+};
