@@ -1,0 +1,110 @@
+<h2>Full Design: Brutalist Infinite Doomscroll Feed</h2>
+<p class="subtitle">Here's the complete design broken into sections. Review each part.</p>
+
+<div class="section">
+  <h3>Files</h3>
+  <div style="background:#1a1a1a;padding:16px;border-radius:8px;font-family:monospace;font-size:13px;color:#ccc;line-height:1.8;">
+    <div><span style="color:#ff3333;">DELETE</span> styles/page2.css through page7.css</div>
+    <div><span style="color:#ff3333;">DELETE</span> style switching logic from random.js</div>
+    <div><span style="color:#00cc66;">REWRITE</span> styles/page1.css → brutalist theme (single stylesheet)</div>
+    <div><span style="color:#00cc66;">REWRITE</span> doomscrolling.html → simplified markup</div>
+    <div><span style="color:#00cc66;">REWRITE</span> random.js → infinite scroll + escalating commentary</div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Visual Design — Brutalist Theme</h3>
+  <div class="mockup">
+    <div class="mockup-header">Feed Preview</div>
+    <div class="mockup-body" style="background:#0f0f0f;padding:16px;">
+      <!-- Post -->
+      <div style="background:#0f0f0f;border:2px solid #fff;padding:14px;margin-bottom:4px;">
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;">
+          <div style="width:34px;height:34px;border-radius:0;background:#ff3333;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:13px;">S</div>
+          <div>
+            <div style="color:#fff;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;">@scrollqueen</div>
+            <div style="color:#666;font-size:10px;font-family:monospace;">00:03:22 ago</div>
+          </div>
+        </div>
+        <div style="color:#ccc;font-size:13px;line-height:1.6;font-family:monospace;">sometimes i wonder if the algorithm knows me better than i know myself</div>
+        <div style="background:#1a1a1a;height:80px;margin-top:10px;display:flex;align-items:center;justify-content:center;border:1px dashed #333;">
+          <span style="color:#555;font-size:11px;font-family:monospace;">[IMAGE]</span>
+        </div>
+        <div style="display:flex;gap:16px;margin-top:10px;font-size:12px;color:#ff3333;font-weight:700;font-family:monospace;">
+          <span>▲ 2,412</span> <span>■ 891</span> <span style="margin-left:auto;color:#666;">►</span>
+        </div>
+      </div>
+
+      <!-- Subtle counter divider -->
+      <div style="text-align:center;font-family:monospace;font-size:10px;color:#ff3333;letter-spacing:0.2em;padding:8px 0;">
+        ━━━ POST 12 OF ∞ ━━━
+      </div>
+
+      <!-- Post 2 -->
+      <div style="background:#0f0f0f;border:2px solid #fff;padding:14px;margin-bottom:4px;">
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;">
+          <div style="width:34px;height:34px;border-radius:0;background:#ff3333;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:13px;">B</div>
+          <div>
+            <div style="color:#fff;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;">@brainrot.exe</div>
+            <div style="color:#666;font-size:10px;font-family:monospace;">00:08:41 ago</div>
+          </div>
+        </div>
+        <div style="color:#ccc;font-size:13px;line-height:1.6;font-family:monospace;">the feed just keeps going. and because of that, it always feels like there is one more thing worth seeing.</div>
+      </div>
+
+      <!-- Aggressive warning (appears later) -->
+      <div style="border:2px solid #ff3333;padding:10px;margin:4px 0;text-align:center;">
+        <div style="font-family:monospace;font-size:11px;color:#ff3333;font-weight:900;letter-spacing:0.1em;">⚠ YOU HAVE BEEN HERE FOR 5 MINUTES. THIS IS THE PROBLEM. ⚠</div>
+      </div>
+
+      <!-- Post 3 -->
+      <div style="background:#0f0f0f;border:2px solid #fff;padding:14px;">
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;">
+          <div style="width:34px;height:34px;border-radius:0;background:#ff3333;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:13px;">P</div>
+          <div>
+            <div style="color:#fff;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;">@procrastinator99</div>
+            <div style="color:#666;font-size:10px;font-family:monospace;">00:12:07 ago</div>
+          </div>
+        </div>
+        <div style="color:#ccc;font-size:13px;line-height:1.6;font-family:monospace;">it feels new every time, but it is really the same behavior over and over again.</div>
+        <div style="background:#1a1a1a;height:80px;margin-top:10px;display:flex;align-items:center;justify-content:center;border:1px dashed #333;">
+          <span style="color:#555;font-size:11px;font-family:monospace;">[IMAGE]</span>
+        </div>
+        <div style="display:flex;gap:16px;margin-top:10px;font-size:12px;color:#ff3333;font-weight:700;font-family:monospace;">
+          <span>▲ 14,208</span> <span>■ 3,102</span> <span style="margin-left:auto;color:#666;">►</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Escalating Commentary System</h3>
+  <div style="background:#1a1a1a;padding:16px;border-radius:8px;font-family:monospace;font-size:12px;color:#ccc;line-height:2.2;">
+    <div style="color:#666;">// Phase 1: Subtle (posts 1-15)</div>
+    <div>━━━ POST 5 OF ∞ ━━━</div>
+    <div>━━━ POST 12 OF ∞ ━━━</div>
+    <div style="color:#666;margin-top:8px;">// Phase 2: Aware (posts 16-35)</div>
+    <div style="color:#ff3333;">━━━ YOU'VE SEEN 20 POSTS. NONE OF THEM MATTERED. ━━━</div>
+    <div style="color:#ff3333;">━━━ POST 28. STILL HERE? ━━━</div>
+    <div style="color:#666;margin-top:8px;">// Phase 3: Aggressive (posts 36+)</div>
+    <div style="color:#ff3333;font-weight:700;">⚠ YOU HAVE BEEN HERE FOR 5 MINUTES. THIS IS THE PROBLEM. ⚠</div>
+    <div style="color:#ff3333;font-weight:700;">⚠ CLOSE THE TAB. GO OUTSIDE. DO LITERALLY ANYTHING ELSE. ⚠</div>
+    <div style="color:#ff3333;font-weight:700;">⚠ THIS IS POST 50. YOU WILL NOT REMEMBER A SINGLE ONE. ⚠</div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Infinite Scroll Behavior</h3>
+  <div style="background:#1a1a1a;padding:16px;border-radius:8px;font-family:monospace;font-size:12px;color:#ccc;line-height:2;">
+    <div>• IntersectionObserver watches a sentinel element at the bottom</div>
+    <div>• When visible → generate 5-8 new posts, append to feed</div>
+    <div>• Posts are mix of image + text (using existing 10 images, cycling randomly)</div>
+    <div>• Commentary dividers injected every ~5 posts</div>
+    <div>• Phase escalates based on total post count + time on page</div>
+    <div>• No button, no page reload — just endless content</div>
+    <div>• Bottom nav simplified: just "← back" link to index.html</div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top:24px;">Does this design look right? Let me know in the terminal if anything needs changing.</p>

@@ -1,12 +1,4 @@
-const stylesArr = [
-    "styles/page1.css",
-    "styles/page2.css",
-    "styles/page3.css",
-    "styles/page4.css",
-    "styles/page5.css",
-    "styles/page6.css",
-    "styles/page7.css"
-];
+/* ── Data ─────────────────────────────────────────────────── */
 
 const imageArr = [
     "images/image1.png",  "images/image2.png",  "images/image3.png",
@@ -83,30 +75,110 @@ const usernamesArr = [
     "@nothingimportant", "@justchecking_", "@phonebrain2024", "@ugh.anyway"
 ];
 
-const nextBtnLabels = [
-    "keep scrolling ↓",
-    "just one more ↓",
-    "you can stop anytime ↓",
-    "last one i promise ↓",
-    "okay this is actually the last one ↓",
-    "fr this time ↓",
-    "lmaooo you're still here ↓",
-    "it's been how long?? ↓",
-    "no judgment ↓",
-    "we've all been there ↓",
-    "one more won't hurt ↓",
-    "you were just about to stop ↓"
+const randomCommentsArr = [
+    "no way this is real lmaooo",
+    "bro think he him 💀",
+    "this is the content i signed up for",
+    "why is this so accurate though",
+    "im literally crying rn",
+    "someone come get their mans",
+    "i showed this to my mom and she blocked me",
+    "this lives in my head rent free",
+    "not me watching this for the 5th time",
+    "the way i just spit out my coffee",
+    "tag someone who needs to see this",
+    "i feel personally attacked",
+    "this has no business being this funny",
+    "POV: you found the best post on the internet",
+    "why does nobody talk about this",
+    "ok but like actually though",
+    "i cant unsee this now thanks",
+    "this is criminally underrated",
+    "adding this to my collection",
+    "its giving main character energy",
+    "the algorithm really said here you go",
+    "i was today years old when i found out",
+    "somebody explain this to me like im five",
+    "bruh moment of the century",
+    "this is peak internet right here",
+    "how did i end up on this side of the feed",
+    "im supposed to be sleeping rn",
+    "one more post then im done i swear",
+    "this hit different at 3am",
+    "the fact that this exists is wild",
+    "im not even gonna ask how you found this",
+    "real ones know",
+    "who gave you permission to post this",
+    "this is so unhinged i love it",
+    "putting my phone down after this... jk no im not",
+    "the internet remains undefeated",
+    "screenshotted and sent to the group chat",
+    "this is my roman empire",
+    "tell me why i just watched this 8 times",
+    "honestly same",
+    "touch grass immediately",
+    "go outside challenge: impossible for you",
+    "your screen time report is crying rn",
+    "tell me you have no hobbies without telling me",
+    "this is why nobody texts you back",
+    "bro has never seen sunlight",
+    "least chronically online person",
+    "you posted this and thought it was a W?",
+    "ratio + you fell off + go outside",
+    "imagine having this much free time",
+    "this is what zero social interaction does to someone",
+    "log off. take a walk. drink water.",
+    "your phone called. it wants a break from you.",
+    "seek help immediately",
+    "this aint the flex you think it is",
+    "nobody asked but ok",
+    "you really sat down and typed this huh",
+    "the wifi password is go outside",
+    "your ancestors didnt survive for this",
+    "congrats this is the worst take ive seen today"
 ];
 
 const timeLabels = [
-    "just now", "1m ago", "2m ago", "3m ago", "5m ago",
-    "8m ago", "12m ago", "23m ago", "34m ago", "1h ago", "2h ago"
+    "00:00:12 ago", "00:01:04 ago", "00:02:33 ago", "00:03:22 ago",
+    "00:05:47 ago", "00:08:41 ago", "00:12:07 ago", "00:23:19 ago",
+    "00:34:55 ago", "01:02:11 ago", "02:14:08 ago"
 ];
 
-let nextBtnIndex = 0;
+const brandsArr = [
+    { name: "NOVAVEX LABS",      initials: "NVX", tagline: "ENGINEERED FOR PEAK PERFORMANCE.",           url: "novavex.com" },
+    { name: "DRIFT APPAREL",     initials: "DFT", tagline: "WEAR THE VOID.",                            url: "driftapparel.co" },
+    { name: "ZYNCO",             initials: "ZYN", tagline: "EVERYTHING. DELIVERED. NOW.",                url: "zynco.app" },
+    { name: "PULSEWAVE",         initials: "PLW", tagline: "SOUND BEYOND LIMITS.",                      url: "pulsewave.io" },
+    { name: "HEXACORE FITNESS",  initials: "HXC", tagline: "YOUR BODY IS SOFTWARE. UPDATE IT.",         url: "hexacore.fit" },
+    { name: "LUMIVOX",           initials: "LMV", tagline: "SEE DIFFERENT.",                            url: "lumivox.com" },
+    { name: "GRINDSET CO.",      initials: "GRD", tagline: "SLEEP IS OPTIONAL.",                        url: "grindset.co" },
+    { name: "VOIDBOX",           initials: "VBX", tagline: "SUBSCRIBE TO EVERYTHING.",                  url: "voidbox.com" }
+];
 
+const commentarySubtle = [
+    "POST {n} OF ∞"
+];
 
-function randomizer(arr) {
+const commentaryAware = [
+    "YOU'VE SEEN {n} POSTS. NONE OF THEM MATTERED.",
+    "POST {n}. STILL HERE?",
+    "YOU HAVE SCROLLED PAST {n} POSTS AND RETAINED NOTHING.",
+    "{n} POSTS DEEP. DO YOU EVEN REMEMBER THE FIRST ONE?",
+    "POST {n}. THE ALGORITHM IS PLEASED."
+];
+
+const commentaryAggressive = [
+    "⚠ YOU HAVE BEEN HERE FOR {t} MINUTES. THIS IS THE PROBLEM. ⚠",
+    "⚠ CLOSE THE TAB. GO OUTSIDE. DO LITERALLY ANYTHING ELSE. ⚠",
+    "⚠ THIS IS POST {n}. YOU WILL NOT REMEMBER A SINGLE ONE. ⚠",
+    "⚠ THE ALGORITHM THANKS YOU FOR YOUR TIME. ⚠",
+    "⚠ YOU JUST LOST ANOTHER MINUTE READING THIS WARNING AND KEPT SCROLLING ⚠",
+    "⚠ {t} MINUTES GONE. YOU ARE THE PRODUCT. ⚠"
+];
+
+/* ── Utilities ────────────────────────────────────────────── */
+
+function randomPick(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
@@ -115,7 +187,7 @@ function getRandomInt(min, max) {
 }
 
 function pickUnique(arr, count) {
-    const pool = [...arr];
+    const pool = arr.slice();
     const result = [];
     const take = Math.min(count, pool.length);
     for (let i = 0; i < take; i++) {
@@ -125,110 +197,426 @@ function pickUnique(arr, count) {
     return result;
 }
 
-function shuffle(arr) {
-    const a = [...arr];
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-}
-
 function formatLikes(n) {
-    if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
+    if (n >= 1000) return (n / 1000).toFixed(1) + "k";
     return String(n);
 }
 
-function makePostCard(post) {
-    const card = document.createElement('div');
-    card.className = 'post-card';
+/* ── Post Generation ──────────────────────────────────────── */
 
-    const likes    = getRandomInt(200, 94000);
+function makeRegularPost() {
+    const username = randomPick(usernamesArr);
+    const time = randomPick(timeLabels);
+    const likes = getRandomInt(200, 94000);
     const comments = getRandomInt(10, 8000);
-    const username = randomizer(usernamesArr);
-    const time     = randomizer(timeLabels);
+    const isImage = Math.random() < 0.35;
 
-    if (post.type === 'image') {
-        card.innerHTML = `
-            <div class="post-header">
-                <div class="avatar">${username.charAt(1).toUpperCase()}</div>
-                <div class="post-meta">
-                    <span class="post-username">${username}</span>
-                    <span class="post-time">${time}</span>
-                </div>
-                <span class="post-dots">•••</span>
-            </div>
-            <img class="post-image" src="${post.src}" alt="post" onerror="this.closest('.post-card').remove()">
-            <div class="engagement">
-                <span class="eng-item">❤️ ${formatLikes(likes)}</span>
-                <span class="eng-item">💬 ${formatLikes(comments)}</span>
-                <span class="eng-item eng-share">↗</span>
-            </div>
-            <div class="post-caption"><strong>${username}</strong> ${post.caption}</div>
-        `;
+    const card = document.createElement("div");
+    card.className = "post-card";
+
+    // Header
+    const header = document.createElement("div");
+    header.className = "post-header";
+
+    const avatar = document.createElement("div");
+    avatar.className = "avatar";
+    avatar.textContent = username.charAt(1).toUpperCase();
+
+    const meta = document.createElement("div");
+    meta.className = "post-meta";
+
+    const nameSpan = document.createElement("span");
+    nameSpan.className = "post-username";
+    nameSpan.textContent = username;
+
+    const timeSpan = document.createElement("span");
+    timeSpan.className = "post-time";
+    timeSpan.textContent = time;
+
+    meta.appendChild(nameSpan);
+    meta.appendChild(timeSpan);
+
+    const dots = document.createElement("span");
+    dots.className = "post-dots";
+    dots.textContent = "•••";
+
+    header.appendChild(avatar);
+    header.appendChild(meta);
+    header.appendChild(dots);
+    card.appendChild(header);
+
+    // Content
+    if (isImage) {
+        const img = document.createElement("img");
+        img.className = "post-image";
+        img.src = randomPick(imageArr);
+        img.alt = "post";
+        img.onerror = function() { card.remove(); };
+        card.appendChild(img);
     } else {
-        card.innerHTML = `
-            <div class="post-header">
-                <div class="avatar">${username.charAt(1).toUpperCase()}</div>
-                <div class="post-meta">
-                    <span class="post-username">${username}</span>
-                    <span class="post-time">${time}</span>
-                </div>
-                <span class="post-dots">•••</span>
-            </div>
-            <div class="post-text">${post.text}</div>
-            <div class="engagement">
-                <span class="eng-item">❤️ ${formatLikes(likes)}</span>
-                <span class="eng-item">💬 ${formatLikes(comments)}</span>
-                <span class="eng-item eng-share">↗</span>
-            </div>
-        `;
+        const textDiv = document.createElement("div");
+        textDiv.className = "post-text";
+        const useRandom = Math.random() < 0.5;
+        textDiv.textContent = useRandom
+            ? randomPick(randomCommentsArr)
+            : pickUnique(sentencesArr, getRandomInt(2, 4)).join(" ");
+        card.appendChild(textDiv);
+    }
+
+    // Caption (only for image posts, before engagement)
+    if (isImage) {
+        const caption = document.createElement("div");
+        caption.className = "post-caption";
+        const strong = document.createElement("strong");
+        strong.textContent = username;
+        caption.appendChild(strong);
+        const capText = Math.random() < 0.5
+            ? randomPick(randomCommentsArr)
+            : pickUnique(sentencesArr, getRandomInt(1, 2)).join(" ");
+        caption.appendChild(document.createTextNode(" " + capText));
+        card.appendChild(caption);
+    }
+
+    // Engagement
+    const engagement = document.createElement("div");
+    engagement.className = "engagement";
+
+    const likesSpan = document.createElement("span");
+    likesSpan.className = "eng-item";
+    likesSpan.textContent = "▲ " + formatLikes(likes);
+
+    const commentsSpan = document.createElement("span");
+    commentsSpan.className = "eng-item";
+    commentsSpan.textContent = "■ " + formatLikes(comments);
+
+    const shareSpan = document.createElement("span");
+    shareSpan.className = "eng-item eng-share";
+    shareSpan.textContent = "►";
+
+    engagement.appendChild(likesSpan);
+    engagement.appendChild(commentsSpan);
+    engagement.appendChild(shareSpan);
+    card.appendChild(engagement);
+
+    return card;
+}
+
+function makeSponsoredPost() {
+    const brand = randomPick(brandsArr);
+
+    const card = document.createElement("div");
+    card.className = "post-card sponsored";
+
+    // Sponsored badge
+    const badge = document.createElement("div");
+    badge.className = "sponsored-badge";
+    badge.textContent = "SPONSORED";
+    card.appendChild(badge);
+
+    // Header
+    const header = document.createElement("div");
+    header.className = "post-header";
+
+    const avatar = document.createElement("div");
+    avatar.className = "avatar";
+    avatar.textContent = brand.initials;
+
+    const meta = document.createElement("div");
+    meta.className = "post-meta";
+
+    const nameSpan = document.createElement("span");
+    nameSpan.className = "post-username";
+    nameSpan.textContent = brand.name;
+
+    const promoted = document.createElement("span");
+    promoted.className = "promoted-label";
+    promoted.textContent = "PROMOTED";
+
+    meta.appendChild(nameSpan);
+    meta.appendChild(promoted);
+
+    header.appendChild(avatar);
+    header.appendChild(meta);
+    card.appendChild(header);
+
+    // Ad copy
+    const copy = document.createElement("div");
+    copy.className = "ad-copy";
+    copy.textContent = brand.tagline;
+    card.appendChild(copy);
+
+    // Ad image placeholder
+    const adImg = document.createElement("div");
+    adImg.className = "ad-image";
+    adImg.textContent = "[AD IMAGE]";
+    card.appendChild(adImg);
+
+    // Footer
+    const footer = document.createElement("div");
+    footer.className = "ad-footer";
+
+    const url = document.createElement("span");
+    url.className = "ad-url";
+    url.textContent = brand.url;
+
+    const cta = document.createElement("button");
+    cta.className = "ad-cta";
+    cta.textContent = "SHOP NOW ►";
+
+    footer.appendChild(url);
+    footer.appendChild(cta);
+    card.appendChild(footer);
+
+    return card;
+}
+
+/* ── User Meme Post ──────────────────────────────────────── */
+
+function makeUserMemePost(meme) {
+    var card = document.createElement("div");
+    card.className = "post-card";
+
+    // Header
+    var header = document.createElement("div");
+    header.className = "post-header";
+
+    var avatar = document.createElement("div");
+    avatar.className = "avatar";
+    avatar.textContent = "U";
+
+    var meta = document.createElement("div");
+    meta.className = "post-meta";
+
+    var nameSpan = document.createElement("span");
+    nameSpan.className = "post-username";
+    nameSpan.textContent = "user upload";
+
+    meta.appendChild(nameSpan);
+
+    header.appendChild(avatar);
+    header.appendChild(meta);
+    card.appendChild(header);
+
+    // Image
+    var img = document.createElement("img");
+    img.className = "post-image";
+    img.src = meme.imageUrl;
+    img.alt = "user meme";
+    img.onerror = function () { card.remove(); };
+    card.appendChild(img);
+
+    // Caption
+    if (meme.caption) {
+        var caption = document.createElement("div");
+        caption.className = "post-caption";
+        var strong = document.createElement("strong");
+        strong.textContent = "user upload";
+        caption.appendChild(strong);
+        caption.appendChild(document.createTextNode(" " + meme.caption));
+        card.appendChild(caption);
     }
 
     return card;
 }
 
-function generatePage() {
-    // Cycle next-button label
-    const nextBtn = document.getElementById('next-btn');
-    nextBtnIndex = (nextBtnIndex + 1) % nextBtnLabels.length;
-    nextBtn.textContent = nextBtnLabels[nextBtnIndex];
+/* ── Commentary System ────────────────────────────────────── */
 
-    // Apply random theme
-    document.getElementById('theme').href = randomizer(stylesArr);
+const startTime = Date.now();
 
-    // Build posts: 3 image posts + 7 text posts, shuffled
-    const posts = [];
-
-    const imageCount = getRandomInt(2, 4);
-    const textCount = getRandomInt(5, 9);
-
-    const selectedImages = pickUnique(imageArr, imageCount);
-    selectedImages.forEach(function(src) {
-        posts.push({
-            type: 'image',
-            src: src,
-            caption: pickUnique(sentencesArr, getRandomInt(1, 2)).join(' ')
-        });
-    });
-
-    for (let i = 0; i < textCount; i++) {
-        posts.push({
-            type: 'text',
-            text: pickUnique(sentencesArr, getRandomInt(2, 4)).join(' ')
-        });
-    }
-
-    const shuffled = shuffle(posts);
-
-    const feed = document.getElementById('feed');
-    feed.innerHTML = '';
-    shuffled.forEach(function(post) {
-        feed.appendChild(makePostCard(post));
-    });
-
-    window.scrollTo(0, 0);
+function getMinutesElapsed() {
+    return Math.floor((Date.now() - startTime) / 60000);
 }
 
+function makeCommentary(postCount) {
+    const el = document.createElement("div");
+    const minutes = getMinutesElapsed();
+    let template;
 
-generatePage();
+    if (postCount <= 15) {
+        template = randomPick(commentarySubtle);
+        el.className = "commentary";
+    } else if (postCount <= 35) {
+        template = randomPick(commentaryAware);
+        el.className = "commentary";
+    } else {
+        template = randomPick(commentaryAggressive);
+        el.className = "commentary warning";
+    }
+
+    const text = template
+        .replace("{n}", String(postCount))
+        .replace("{t}", String(minutes || 1));
+
+    el.textContent = postCount <= 35
+        ? "━━━ " + text + " ━━━"
+        : text;
+
+    return el;
+}
+
+/* ── Infinite Scroll Engine ───────────────────────────────── */
+
+let totalPosts = 0;
+let postsSinceLastCommentary = 0;
+let nextCommentaryAt = getRandomInt(4, 6);
+let loading = false;
+
+function generateBatch() {
+    if (loading) return;
+    loading = true;
+
+    const feed = document.getElementById("feed");
+    const batchSize = getRandomInt(5, 8);
+
+    for (let i = 0; i < batchSize; i++) {
+        // Check if commentary divider is due
+        if (postsSinceLastCommentary >= nextCommentaryAt) {
+            feed.appendChild(makeCommentary(totalPosts));
+            postsSinceLastCommentary = 0;
+            nextCommentaryAt = getRandomInt(4, 6);
+        }
+
+        // 10% chance of sponsored post
+        if (Math.random() < 0.1) {
+            feed.appendChild(makeSponsoredPost());
+        } else {
+            feed.appendChild(makeRegularPost());
+        }
+
+        totalPosts++;
+        postsSinceLastCommentary++;
+    }
+
+    loading = false;
+}
+
+// Set up IntersectionObserver on the sentinel
+const sentinel = document.getElementById("sentinel");
+const observer = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
+        generateBatch();
+    }
+}, { rootMargin: "200px" });
+
+observer.observe(sentinel);
+
+// Generate first post as an image post, then start batches
+(function() {
+    const feed = document.getElementById("feed");
+    const username = randomPick(usernamesArr);
+    const time = randomPick(timeLabels);
+    const likes = getRandomInt(200, 94000);
+    const comments = getRandomInt(10, 8000);
+
+    const card = document.createElement("div");
+    card.className = "post-card";
+
+    const header = document.createElement("div");
+    header.className = "post-header";
+
+    const avatar = document.createElement("div");
+    avatar.className = "avatar";
+    avatar.textContent = username.charAt(1).toUpperCase();
+
+    const meta = document.createElement("div");
+    meta.className = "post-meta";
+
+    const nameSpan = document.createElement("span");
+    nameSpan.className = "post-username";
+    nameSpan.textContent = username;
+
+    const timeSpan = document.createElement("span");
+    timeSpan.className = "post-time";
+    timeSpan.textContent = time;
+
+    meta.appendChild(nameSpan);
+    meta.appendChild(timeSpan);
+
+    const dots = document.createElement("span");
+    dots.className = "post-dots";
+    dots.textContent = "•••";
+
+    header.appendChild(avatar);
+    header.appendChild(meta);
+    header.appendChild(dots);
+    card.appendChild(header);
+
+    const img = document.createElement("img");
+    img.className = "post-image";
+    img.src = randomPick(imageArr);
+    img.alt = "post";
+    img.onerror = function() { card.remove(); };
+    card.appendChild(img);
+
+    const caption = document.createElement("div");
+    caption.className = "post-caption";
+    const strong = document.createElement("strong");
+    strong.textContent = username;
+    caption.appendChild(strong);
+    caption.appendChild(document.createTextNode(" " + pickUnique(sentencesArr, getRandomInt(1, 2)).join(" ")));
+    card.appendChild(caption);
+
+    const engagement = document.createElement("div");
+    engagement.className = "engagement";
+
+    const likesSpan = document.createElement("span");
+    likesSpan.className = "eng-item";
+    likesSpan.textContent = "▲ " + formatLikes(likes);
+
+    const commentsSpan = document.createElement("span");
+    commentsSpan.className = "eng-item";
+    commentsSpan.textContent = "■ " + formatLikes(comments);
+
+    const shareSpan = document.createElement("span");
+    shareSpan.className = "eng-item eng-share";
+    shareSpan.textContent = "►";
+
+    engagement.appendChild(likesSpan);
+    engagement.appendChild(commentsSpan);
+    engagement.appendChild(shareSpan);
+    card.appendChild(engagement);
+
+    feed.appendChild(card);
+    totalPosts++;
+    postsSinceLastCommentary++;
+})();
+
+generateBatch();
+
+/* ── User Meme Integration ───────────────────────────────── */
+
+let userMemes = [];
+let userMemeIndex = 0;
+
+function loadUserMemes() {
+    if (typeof db === "undefined") return;
+
+    db.collection("memes")
+        .orderBy("timestamp", "desc")
+        .limit(20)
+        .get()
+        .then(function (snapshot) {
+            snapshot.forEach(function (doc) {
+                userMemes.push(doc.data());
+            });
+        })
+        .catch(function () {
+            // Firebase not configured yet — silently skip
+        });
+}
+
+loadUserMemes();
+
+// Patch generateBatch to mix in user memes
+const _originalGenerateBatch = generateBatch;
+generateBatch = function () {
+    _originalGenerateBatch();
+
+    if (userMemeIndex < userMemes.length && Math.random() < 0.2) {
+        const feed = document.getElementById("feed");
+        const sentinel = document.getElementById("sentinel");
+        const card = makeUserMemePost(userMemes[userMemeIndex]);
+        feed.insertBefore(card, sentinel);
+        userMemeIndex++;
+    }
+};
