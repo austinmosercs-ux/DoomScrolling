@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>my opinion</title>
-    <link rel="stylesheet" href="styles/shared.css">
+    <link rel="stylesheet" href="../styles/shared.css">
     <style>
         .hero-quote {
             font-size: 1.05rem;
@@ -21,24 +21,115 @@
             color: #666;
             font-style: italic;
         }
+
+        /* ── Fade-swap essay ── */
+        .hero {
+            position: sticky;
+            top: var(--nav-height, 45px);
+            z-index: 50;
+            margin-bottom: 0;
+        }
+        .top-nav {
+            z-index: 100;
+        }
+
+        .essay-fade {
+            position: relative;
+        }
+        .essay-fade .paragraph {
+            height: 100vh;
+        }
+        .essay-fade .paragraph-inner {
+            position: fixed;
+            top: calc(var(--hero-height, 340px) + 120px);
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 620px;
+            width: calc(100% - 48px);
+            padding: 0 24px;
+            opacity: 0;
+            visibility: hidden;
+            filter: blur(14px);
+            transition: opacity 1.4s ease, visibility 1.4s, filter 1.4s ease;
+            pointer-events: none;
+            z-index: 2;
+            color: var(--white);
+            font-size: 1.15rem;
+            line-height: 1.85;
+            text-align: left;
+        }
+        .essay-fade .paragraph.active .paragraph-inner {
+            opacity: 1;
+            visibility: visible;
+            filter: blur(0);
+            pointer-events: auto;
+        }
+        .essay-fade .inline-meme {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 4px;
+            letter-spacing: 0.02em;
+        }
+        .scroll-hint {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: var(--gray);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.6;
+            pointer-events: none;
+            transition: opacity 0.4s;
+            animation: scroll-bounce 1.6s ease-in-out infinite;
+        }
+        .scroll-hint.hidden { opacity: 0; }
+        .essay-progress {
+            position: fixed;
+            top: 50%;
+            right: 24px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 60;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .essay-progress .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #444;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .essay-progress .dot.active {
+            background: var(--accent);
+            transform: scale(1.6);
+        }
     </style>
 </head>
 <body>
 
     <nav class="top-nav">
-        <a href="index.html" class="nav-link">home</a>
+        <a href="../../index.html" class="nav-link">home</a>
         <a href="opinion.html" class="nav-link active">my opinion</a>
-        <a href="purpose.html" class="nav-link">purpose</a>
         <a href="doomscrolling.html" class="nav-link">start scrolling</a>
+        <a href="purpose.html" class="nav-link">purpose</a>
     </nav>
 
     <div class="hero">
         <div class="logo-slideshow">
-            <img src="logos/tictok.png" alt="TikTok" class="slide active">
-            <img src="logos/instagram.png" alt="Instagram" class="slide">
-            <img src="logos/youtube.png" alt="YouTube" class="slide">
-            <img src="logos/x.png" alt="x" class="slide">
-            <img src="logos/facebook.png" alt="facebook" class="slide">
+            <img src="../../assets/logos/tictok.png" alt="TikTok" class="slide active">
+            <img src="../../assets/logos/instagram.png" alt="Instagram" class="slide">
+            <img src="../../assets/logos/youtube.png" alt="YouTube" class="slide">
+            <img src="../../assets/logos/x.png" alt="x" class="slide">
+            <img src="../../assets/logos/facebook.png" alt="facebook" class="slide">
         </div>
         <div class="hero-content">
             <h1>my opinion</h1>
@@ -46,83 +137,148 @@
         </div>
     </div>
 
-    <div class="page">
+    <div class="essay-fade" id="essay">
 
-        <div class="essay">
-
-            <p>
+        <div class="paragraph">
+            <div class="paragraph-inner">
                 I honestly think doomscrolling is just a huge waste of time. You can start anywhere. In class, laying in bed,
                 waiting for something, or just checking your phone for a second. Then somehow an hour is gone and you do not
                 even know how it happened. Most of the time you do not notice it starting. It just kind of pulls you in. To me,
                 doomscrolling is constantly looking through negative or dramatic stuff online, even when you know it is not really
                 helping you. It is not always intentional either. Sometimes you are bored. Sometimes you are avoiding something.
                 Sometimes it is just automatic.
-            </p>
+            </div>
+        </div>
 
-            <p>
+        <div class="paragraph">
+            <div class="paragraph-inner">
                 It feels addicting because apps are built to keep you there. TikTok, Instagram, Twitter, YouTube, they all have
                 endless feeds. And now even apps that did not used to have that kind of layout are adding it. There is no real
                 stopping point. The next post just loads. The next video just plays. You do not even have to press anything. On
                 top of that, there is always that feeling like you might miss something if you stop. Even if it is not important, it
                 feels important in the moment. That mix of endless content and curiosity makes it really easy to just keep going.
-            </p>
+            </div>
+        </div>
 
-            <div class="inline-meme">ngl this paragraph is literally you</div>
-
-            <p>
+        <div class="paragraph">
+            <div class="paragraph-inner">
                 For me, doomscrolling usually ends with regret. I tell myself I am just taking a quick break from homework, but
                 that quick break turns into something way longer. At first it feels fine. Maybe even relaxing. But then it shifts.
                 I start feeling stressed or annoyed at myself for wasting time. It goes from fun to frustrating without me really
                 noticing when it changed. And I feel like a lot of people probably relate to that switch.
-            </p>
+            </div>
+        </div>
 
-            <p>
+        <div class="paragraph">
+            <div class="paragraph-inner">
                 It definitely messes with my productivity. Even when the content is not that interesting, I keep scrolling because
                 maybe the next thing will be better. It completely breaks my focus. Then when I finally stop, it feels like my brain
                 needs a minute to reset before I can actually get back into working mode. And if that keeps happening every day, it
                 adds up. A few minutes here and there turns into hours over time.
-            </p>
+            </div>
+        </div>
 
-            <p>
+        <div class="paragraph">
+            <div class="paragraph-inner">
                 Not everyone doomscrolls the same way. Some people get pulled into dramatic or negative content faster,
                 especially if they are already stressed. Other people can just close the app and move on. For me it kind of depends
                 on how I am feeling that day. Sometimes I can stop easily. Other times I just keep going. So I do not think it is
                 only about the apps. It is also about how you are feeling when you open them.
-            </p>
+            </div>
+        </div>
 
-            <p>
+        <div class="paragraph">
+            <div class="paragraph-inner">
                 It is hard to stop because everything feels personalized. The app learns what you like and keeps showing you more
                 of it. So right when you are about to close it, something catches your attention again. It almost feels automatic
                 after a while. There is no real ending, no final page, nothing that signals you are done. The feed just keeps going.
                 And because of that, it always feels like there is one more thing worth seeing.
-            </p>
+            </div>
+        </div>
 
-            <p>
+        <div class="paragraph">
+            <div class="paragraph-inner">
                 Doomscrolling feels like a cycle. You start because you are bored or avoiding something. You stay because it is
                 entertaining. You stop feeling guilty. Then the next day you do it again. It repeats, but it always feels slightly
                 different because the posts and images change. That is what makes it tricky. It feels new every time, but it is
                 really the same behavior over and over again.
-            </p>
-
+            </div>
         </div>
 
-        <div class="bottom-cta">
-            <p class="cta-label">okay but wanna see what it actually looks like?</p>
-            <a href="doomscrolling.html" class="next-btn">start scrolling &rarr;</a>
+        <div class="paragraph">
+            <div class="paragraph-inner">
+                <div class="bottom-cta" style="border: none; margin: 0;">
+                    <p class="cta-label">okay but wanna see what it actually looks like?</p>
+                    <a href="doomscrolling.html" class="next-btn">start scrolling &rarr;</a>
+                </div>
+            </div>
         </div>
 
     </div>
+
+    <div class="essay-progress" id="essay-progress"></div>
+    <div class="scroll-hint" id="scroll-hint">scroll ↓</div>
 
     <script>
         const slides = document.querySelectorAll('.logo-slideshow .slide');
         if (slides.length > 0) {
             let current = 0;
             setInterval(() => {
-                slides[current].classList.remove('active');
+                const prev = slides[current];
+                prev.classList.remove('active');
+                prev.classList.add('leaving');
+                setTimeout(() => prev.classList.remove('leaving'), 2200);
                 current = (current + 1) % slides.length;
                 slides[current].classList.add('active');
-            }, 1800);
+            }, 7000);
         }
+
+        // Fade-swap essay
+        const paragraphs = document.querySelectorAll('.essay-fade .paragraph');
+        const progressEl = document.getElementById('essay-progress');
+        const scrollHint = document.getElementById('scroll-hint');
+
+        paragraphs.forEach(() => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            progressEl.appendChild(dot);
+        });
+        const dots = progressEl.querySelectorAll('.dot');
+
+        const hero = document.querySelector('.hero');
+        const nav = document.querySelector('.top-nav');
+
+        function syncHeights() {
+            document.documentElement.style.setProperty('--hero-height', hero.offsetHeight + 'px');
+            document.documentElement.style.setProperty('--nav-height', nav.offsetHeight + 'px');
+        }
+        syncHeights();
+        window.addEventListener('resize', syncHeights);
+
+        function updateActive() {
+            let activeIdx = 0;
+            paragraphs.forEach((p, i) => {
+                const rect = p.getBoundingClientRect();
+                if (rect.top <= 1 && rect.bottom > 1) {
+                    activeIdx = i;
+                }
+            });
+            paragraphs.forEach((p, i) => p.classList.toggle('active', i === activeIdx));
+            dots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+            progressEl.style.opacity = '1';
+        }
+
+        window.addEventListener('scroll', updateActive, { passive: true });
+        window.addEventListener('resize', updateActive);
+        updateActive();
+
+        let scrolled = false;
+        window.addEventListener('scroll', () => {
+            if (!scrolled && window.scrollY > 50) {
+                scrolled = true;
+                scrollHint.classList.add('hidden');
+            }
+        }, { passive: true });
     </script>
 </body>
 </html>

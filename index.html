@@ -4,127 +4,161 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>doomscrolling</title>
-    <link rel="stylesheet" href="styles/shared.css">
-    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="src/styles/shared.css">
+    <link rel="stylesheet" href="src/styles/index.css">
+    <style>
+        .hero {
+            position: sticky;
+            top: var(--nav-height, 45px);
+            z-index: 50;
+            margin-bottom: 0;
+        }
+        .top-nav { z-index: 100; }
+
+        .research-fade { position: relative; }
+        .research-fade .research-slide { height: 100vh; }
+        .research-fade .slide-inner {
+            position: fixed;
+            top: calc(var(--hero-height, 340px) + 120px);
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 620px;
+            width: calc(100% - 48px);
+            padding: 0 24px;
+            opacity: 0;
+            visibility: hidden;
+            filter: blur(14px);
+            transition: opacity 1.4s ease, visibility 1.4s, filter 1.4s ease;
+            pointer-events: none;
+            z-index: 2;
+            color: var(--white);
+            text-align: left;
+        }
+        .research-fade .research-slide.active .slide-inner {
+            opacity: 1;
+            visibility: visible;
+            filter: blur(0);
+            pointer-events: auto;
+        }
+        .slide-stat {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #fff;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        .slide-line {
+            font-size: 1.1rem;
+            color: var(--white);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .slide-source {
+            font-size: 0.8rem;
+            color: var(--gray);
+            letter-spacing: 0.05em;
+        }
+        .slide-source a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .slide-source a:hover { text-decoration: underline; }
+
+        .research-progress {
+            position: fixed;
+            top: 50%;
+            right: 24px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 60;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .research-progress .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #444;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .research-progress .dot.active {
+            background: var(--accent);
+            transform: scale(1.6);
+        }
+    </style>
 </head>
 <body>
 
     <nav class="top-nav">
         <a href="index.html" class="nav-link active">home</a>
-        <a href="opinion.html" class="nav-link">my opinion</a>
-        <a href="purpose.html" class="nav-link">purpose</a>
-        <a href="doomscrolling.html" class="nav-link">start scrolling</a>
+        <a href="src/pages/opinion.html" class="nav-link">my opinion</a>
+        <a href="src/pages/doomscrolling.html" class="nav-link">start scrolling</a>
+        <a href="src/pages/purpose.html" class="nav-link">purpose</a>
     </nav>
 
     <div class="hero">
         <div class="logo-slideshow">
-            <img src="logos/tictok.png" alt="TikTok" class="slide active">
-            <img src="logos/instagram.png" alt="Instagram" class="slide">
-            <img src="logos/youtube.png" alt="YouTube" class="slide">
-            <img src="logos/x.png" alt="x" class="slide">
-            <img src="logos/facebook.png" alt="facebook" class="slide">
+            <img src="assets/logos/tictok.png" alt="TikTok" class="slide active">
+            <img src="assets/logos/instagram.png" alt="Instagram" class="slide">
+            <img src="assets/logos/youtube.png" alt="YouTube" class="slide">
+            <img src="assets/logos/x.png" alt="x" class="slide">
+            <img src="assets/logos/facebook.png" alt="facebook" class="slide">
         </div>
         <div class="hero-content">
-            <div class="top-label">what the data says</div>
             <h1>doomscrolling</h1>
+            <p class="hero-intro">You know it wastes your time. Here is how much.</p>
         </div>
     </div>
 
-    <div class="page-container">
+    <div class="research-fade" id="research">
 
-        <!-- Section 1: The Wake-Up Call -->
-        <div class="hero-section">
-            <div class="hero-stat">The average person spends 2 hours and 23 minutes on social media every day.</div>
-            <div class="hero-sub">That's 36 full days a year. Scrolling.</div>
-
-            <div class="stat-block">
-                <div class="stat-text">Americans check their phones 96 times a day.</div>
-                <div class="stat-source"><a href="https://www.asurion.com/connect/tech-blog/tech-usage/" target="_blank" rel="noopener">Asurion (2019)</a></div>
-            </div>
-            <div class="stat-block">
-                <div class="stat-text">50% of adults report feeling addicted to their phones.</div>
-                <div class="stat-source"><a href="https://www.commonsensemedia.org/research/technology-addiction-concern-controversy-and-finding-balance" target="_blank" rel="noopener">Common Sense Media</a></div>
-            </div>
-            <div class="stat-block">
-                <div class="stat-text">Screen time increased 76% during the pandemic.</div>
-                <div class="stat-source"><a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2785493" target="_blank" rel="noopener">JAMA Network Open (2021)</a></div>
+        <div class="research-slide">
+            <div class="slide-inner">
+                <div class="slide-stat">2 hours, 23 minutes.</div>
+                <p class="slide-line">That is how long the average person spends on social media every day. Over a year, that adds up to <strong>36 full days</strong> of your life. Scrolling.</p>
+                <div class="slide-source"><a href="https://datareportal.com/reports/digital-2024-global-overview-report" target="_blank" rel="noopener">DataReportal — Digital 2024</a></div>
             </div>
         </div>
 
-        <!-- Section 2: The Real Cost -->
-        <div class="cost-section">
-            <div class="section-title">The Real Cost</div>
-
-            <div class="sub-topic">Mental Health</div>
-            <div class="research-block">
-                <div class="research-text">"Passive social media use is linked to increased depression and loneliness."</div>
-                <div class="research-detail">Scrolling without interacting makes you feel worse, not better.</div>
-                <div class="research-source"><a href="https://doi.org/10.1037/xge0000600" target="_blank" rel="noopener">Journal of Experimental Psychology (2019)</a></div>
-            </div>
-            <div class="research-block">
-                <div class="research-text">"Limiting social media to 30 min/day led to significant reductions in anxiety and FOMO."</div>
-                <div class="research-detail">Less time on feeds = measurably less stress.</div>
-                <div class="research-source"><a href="https://guilfordjournals.com/doi/10.1521/jscp.2018.37.10.751" target="_blank" rel="noopener">Journal of Social and Clinical Psychology (2018)</a></div>
-            </div>
-
-            <div class="sub-topic">Sleep</div>
-            <div class="research-block">
-                <div class="research-text">"Blue light exposure before bed suppresses melatonin by up to 50%."</div>
-                <div class="research-detail">Your phone is literally keeping you awake.</div>
-                <div class="research-source"><a href="https://www.health.harvard.edu/staying-healthy/blue-light-has-a-dark-side" target="_blank" rel="noopener">Harvard Health</a></div>
-            </div>
-            <div class="research-block">
-                <div class="research-text">"People who doomscroll before sleep report worse sleep quality and more fatigue."</div>
-                <div class="research-detail">The last thing you see before bed shapes how you rest.</div>
-                <div class="research-source"><a href="https://doi.org/10.1080/10410236.2021.1987612" target="_blank" rel="noopener">Health Communication (2021)</a></div>
-            </div>
-
-            <div class="sub-topic">Attention Span</div>
-            <div class="research-block">
-                <div class="research-text">"The average human attention span has dropped from 12 seconds to 8 seconds."</div>
-                <div class="research-detail">That is less than a goldfish.</div>
-                <div class="research-source"><a href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener">Microsoft Canada (2015)</a></div>
-            </div>
-            <div class="research-block">
-                <div class="research-text">"Heavy media multitaskers perform worse on task-switching tests."</div>
-                <div class="research-detail">More tabs open does not mean more getting done.</div>
-                <div class="research-source"><a href="https://doi.org/10.1073/pnas.0903620106" target="_blank" rel="noopener">Stanford / PNAS (2009)</a></div>
+        <div class="research-slide">
+            <div class="slide-inner">
+                <div class="slide-stat">Your brain is being hacked.</div>
+                <p class="slide-line">Social media platforms are engineered by teams of psychologists to keep you scrolling. Infinite scroll, autoplay, notifications — <strong>none of it is accidental</strong>.</p>
+                <div class="slide-source"><a href="https://www.health.harvard.edu/mind-and-mood/doomscrolling-dangers" target="_blank" rel="noopener">Harvard Health — 2024</a></div>
             </div>
         </div>
 
-        <!-- Section 3: Take Back Your Time -->
-        <div class="reframe-header">In 2 hours and 23 minutes you could:</div>
-        <ul class="reframe-list">
-            <li>Learn a new song on an instrument</li>
-            <li>Run a 5K</li>
-            <li>Read 80+ pages of a book</li>
-            <li>Cook a full meal from scratch</li>
-            <li>Have an actual conversation with someone</li>
-            <li>Start a side project</li>
-            <li>Get a full workout in</li>
-            <li>Write something that matters</li>
-        </ul>
+        <div class="research-slide">
+            <div class="slide-inner">
+                <div class="slide-stat">You already knew it was bad. You kept scrolling anyway.</div>
+                <p class="slide-line">That is not weakness — that is by design. The same <strong>dopamine loop</strong> that drives gambling addiction drives your feed.</p>
+                <div class="slide-source"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10074257/" target="_blank" rel="noopener">NIH — 2022</a></div>
+            </div>
+        </div>
 
-        <div class="closing-statement">The feed never ends. But you can.</div>
+        <div class="research-slide">
+            <div class="slide-inner">
+                <div class="slide-stat">The news isn't making you informed. It's making you anxious.</div>
+                <p class="slide-line">Studies show the more you consume, the worse you feel — yet the algorithm keeps serving you <strong>more of exactly what's hurting you</strong>.</p>
+                <div class="slide-source"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9580444/" target="_blank" rel="noopener">Applied Research in Quality of Life — 2023</a></div>
+            </div>
+        </div>
 
-        <!-- Sources -->
-        <div class="sources-section">
-            <div class="sources-badge">SOURCES</div>
-            <ol class="sources-list">
-                <li><a href="https://datareportal.com/reports/digital-2024-global-overview-report" target="_blank" rel="noopener">DataReportal — "Digital 2024: Global Overview Report"</a></li>
-                <li><a href="https://www.asurion.com/connect/tech-blog/tech-usage/" target="_blank" rel="noopener">Asurion — "Americans Check Their Phones 96 Times a Day" (2019)</a></li>
-                <li><a href="https://www.commonsensemedia.org/research/technology-addiction-concern-controversy-and-finding-balance" target="_blank" rel="noopener">Common Sense Media — "Technology Addiction: Concern, Controversy, and Finding Balance"</a></li>
-                <li><a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2785493" target="_blank" rel="noopener">JAMA Network Open — "Screen Time During COVID-19" (2021)</a></li>
-                <li><a href="https://doi.org/10.1037/xge0000600" target="_blank" rel="noopener">Journal of Experimental Psychology — "Facebook Usage and Depressive Symptoms" (2019)</a></li>
-                <li><a href="https://guilfordjournals.com/doi/10.1521/jscp.2018.37.10.751" target="_blank" rel="noopener">Journal of Social and Clinical Psychology — "No More FOMO" (2018)</a></li>
-                <li><a href="https://www.health.harvard.edu/staying-healthy/blue-light-has-a-dark-side" target="_blank" rel="noopener">Harvard Health — "Blue Light Has a Dark Side"</a></li>
-                <li><a href="https://doi.org/10.1080/10410236.2021.1987612" target="_blank" rel="noopener">Health Communication — "Doomscrolling and Sleep Quality" (2021)</a></li>
-                <li><a href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener">Microsoft Canada — "Attention Spans" (2015)</a></li>
-                <li><a href="https://doi.org/10.1073/pnas.0903620106" target="_blank" rel="noopener">Stanford / PNAS — "Cognitive Control in Media Multitaskers" (2009)</a></li>
-            </ol>
+        <div class="research-slide">
+            <div class="slide-inner">
+                <div class="bottom-cta" style="border: none; margin: 0;">
+                    <p class="cta-label">want to hear a personal take on this?</p>
+                    <a href="src/pages/opinion.html" class="next-btn">read my opinion &rarr;</a>
+                </div>
+            </div>
         </div>
 
     </div>
+
+    <div class="research-progress" id="research-progress"></div>
 
 
     <script>
@@ -132,11 +166,51 @@
         if (slides.length > 0) {
             let current = 0;
             setInterval(() => {
-                slides[current].classList.remove('active');
+                const prev = slides[current];
+                prev.classList.remove('active');
+                prev.classList.add('leaving');
+                setTimeout(() => prev.classList.remove('leaving'), 2200);
                 current = (current + 1) % slides.length;
                 slides[current].classList.add('active');
-            }, 1800);
+            }, 7000);
         }
+
+        // Fade-swap research
+        const researchSlides = document.querySelectorAll('.research-fade .research-slide');
+        const researchProgress = document.getElementById('research-progress');
+        const hero = document.querySelector('.hero');
+        const nav = document.querySelector('.top-nav');
+
+        function syncHeights() {
+            document.documentElement.style.setProperty('--hero-height', hero.offsetHeight + 'px');
+            document.documentElement.style.setProperty('--nav-height', nav.offsetHeight + 'px');
+        }
+        syncHeights();
+        window.addEventListener('resize', syncHeights);
+
+        researchSlides.forEach(() => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            researchProgress.appendChild(dot);
+        });
+        const researchDots = researchProgress.querySelectorAll('.dot');
+
+        function updateResearchActive() {
+            let activeIdx = 0;
+            researchSlides.forEach((s, i) => {
+                const rect = s.getBoundingClientRect();
+                if (rect.top <= 1 && rect.bottom > 1) {
+                    activeIdx = i;
+                }
+            });
+            researchSlides.forEach((s, i) => s.classList.toggle('active', i === activeIdx));
+            researchDots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+            researchProgress.style.opacity = '1';
+        }
+
+        window.addEventListener('scroll', updateResearchActive, { passive: true });
+        window.addEventListener('resize', updateResearchActive);
+        updateResearchActive();
     </script>
 </body>
 </html>

@@ -1,0 +1,131 @@
+@import url('base.css');
+
+/* ── Purpose Page ── */
+.purpose-section {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+}
+
+.purpose-block {
+    margin-bottom: 40px;
+}
+
+.purpose-block h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.purpose-block p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--white);
+    margin-bottom: 1.2em;
+}
+
+.purpose-highlight {
+    background: var(--dark);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    border-radius: 4px;
+    margin-bottom: 40px;
+}
+
+.purpose-highlight p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--white);
+    margin: 0;
+}
+
+/* ── Scroll Recap ── */
+.scroll-recap {
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    padding: 32px 28px;
+    margin-bottom: 48px;
+    background: rgba(138, 180, 248, 0.04);
+    text-align: center;
+}
+
+.recap-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 24px;
+}
+
+.recap-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 24px;
+}
+
+.recap-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recap-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+
+.recap-desc {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--gray);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.recap-message {
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: var(--gray);
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* ── Closing Message ── */
+.closing-message {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    margin-top: 56px;
+    padding: 40px 20px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: var(--dark);
+    letter-spacing: -0.01em;
+}
+
+/* ── Footer ── */
+.site-footer {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+    text-align: center;
+    font-size: 0.72rem;
+    color: #555;
+}
+
+.site-footer a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
