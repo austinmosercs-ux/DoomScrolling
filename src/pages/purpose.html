@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>purpose / results</title>
+    <link rel="stylesheet" href="../styles/shared.css">
+    <link rel="stylesheet" href="../styles/purpose.css">
+    <style>
+        .hero {
+            position: sticky;
+            top: var(--nav-height, 45px);
+            z-index: 50;
+            margin-bottom: 0;
+        }
+        .top-nav { z-index: 100; }
+
+        .purpose-fade { position: relative; }
+        .purpose-fade .purpose-slide { height: 100vh; }
+        .purpose-fade .slide-inner {
+            position: fixed;
+            top: calc(var(--hero-height, 340px) + 120px);
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 620px;
+            width: calc(100% - 48px);
+            padding: 0 24px;
+            opacity: 0;
+            visibility: hidden;
+            filter: blur(14px);
+            transition: opacity 1.4s ease, visibility 1.4s, filter 1.4s ease;
+            pointer-events: none;
+            z-index: 2;
+            color: var(--white);
+            text-align: left;
+        }
+        .purpose-fade .purpose-slide.active .slide-inner {
+            opacity: 1;
+            visibility: visible;
+            filter: blur(0);
+            pointer-events: auto;
+        }
+        .slide-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+        .slide-headline {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #fff;
+            margin-bottom: 18px;
+            letter-spacing: -0.02em;
+        }
+        .slide-body {
+            font-size: 1.05rem;
+            color: var(--white);
+            line-height: 1.75;
+            margin-bottom: 16px;
+        }
+        .slide-body strong { color: var(--accent); font-weight: 600; }
+
+        .recap-grid {
+            display: flex;
+            gap: 40px;
+            margin: 24px 0 20px;
+        }
+        .recap-cell .num {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+        .recap-cell .lbl {
+            font-size: 0.8rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 6px;
+        }
+
+        .findings-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 8px;
+        }
+        .findings-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #2a2a2a;
+            font-size: 0.98rem;
+            color: var(--white);
+        }
+        .findings-list li:last-child { border-bottom: none; }
+        .findings-list li::before {
+            content: "— ";
+            color: var(--accent);
+        }
+
+        .closing-line {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+        }
+
+        .purpose-progress {
+            position: fixed;
+            top: 50%;
+            right: 24px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 60;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .purpose-progress .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #444;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .purpose-progress .dot.active {
+            background: var(--accent);
+            transform: scale(1.6);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="../../index.html" class="nav-link">home</a>
+        <a href="opinion.html" class="nav-link">my opinion</a>
+        <a href="doomscrolling.html" class="nav-link">start scrolling</a>
+        <a href="purpose.html" class="nav-link active">purpose</a>
+    </nav>
+
+    <div class="hero">
+        <div class="logo-slideshow">
+            <img src="../../assets/logos/tictok.png" alt="TikTok" class="slide active">
+            <img src="../../assets/logos/instagram.png" alt="Instagram" class="slide">
+            <img src="../../assets/logos/youtube.png" alt="YouTube" class="slide">
+            <img src="../../assets/logos/x.png" alt="x" class="slide">
+            <img src="../../assets/logos/facebook.png" alt="facebook" class="slide">
+        </div>
+        <div class="hero-content">
+            <h1>purpose</h1>
+        </div>
+    </div>
+
+    <div class="purpose-fade" id="purpose">
+
+        <div class="purpose-slide">
+            <div class="slide-inner">
+                <div class="slide-label">the point</div>
+                <div class="slide-headline">This site was built to make you feel the time you waste scrolling.</div>
+                <p class="slide-body">Reading a stat is one thing. Watching your own timer tick while you keep scrolling anyway is something else entirely. This project tries to close the gap between <strong>knowing</strong> and <strong>feeling</strong>.</p>
+            </div>
+        </div>
+
+        <div class="purpose-slide" id="slide-recap">
+            <div class="slide-inner">
+                <div class="slide-label" id="recap-label-text">your session</div>
+                <div class="slide-headline" id="recap-headline">here is what this site is.</div>
+                <div id="recap-grid-wrap" style="display: none;">
+                    <div class="recap-grid">
+                        <div class="recap-cell">
+                            <div class="num" id="recap-time">--:--</div>
+                            <div class="lbl">time spent</div>
+                        </div>
+                        <div class="recap-cell">
+                            <div class="num" id="recap-posts">--</div>
+                            <div class="lbl">posts seen</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="slide-body" id="recap-message">
+                    The home page shows the data. The opinion page is a personal take. The scrolling page is the
+                    experience itself — an infinite feed that calls you out the longer you stay in it.
+                </p>
+            </div>
+        </div>
+
+        <div class="purpose-slide">
+            <div class="slide-inner">
+                <div class="slide-label">what the research said</div>
+                <div class="slide-headline">You were not imagining it.</div>
+                <ul class="findings-list">
+                    <li><strong>2h 23min</strong> a day — 36 full days a year.</li>
+                    <li>Your brain is being hacked — <strong>none of it is accidental</strong>.</li>
+                    <li>The same dopamine loop that drives <strong>gambling</strong> drives your feed.</li>
+                    <li>The news is not making you informed. It is making you <strong>anxious</strong>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="purpose-slide">
+            <div class="slide-inner">
+                <div class="slide-label">what i said</div>
+                <div class="slide-headline">It starts as a quick break. It never ends that way.</div>
+                <p class="slide-body">Doomscrolling is a loop: you start because you are bored, you stay because it is entertaining, you stop feeling guilty, and the next day you do it again. The posts change. The behavior does not.</p>
+            </div>
+        </div>
+
+        <div class="purpose-slide">
+            <div class="slide-inner">
+                <div class="closing-line">now close the tab.</div>
+                <p class="slide-body">You already knew all of this. The hard part is not knowing — it is doing something about it.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="purpose-progress" id="purpose-progress"></div>
+
+    <script>
+        // Logo slideshow
+        const slides = document.querySelectorAll('.logo-slideshow .slide');
+        if (slides.length > 0) {
+            let current = 0;
+            setInterval(() => {
+                const prev = slides[current];
+                prev.classList.remove('active');
+                prev.classList.add('leaving');
+                setTimeout(() => prev.classList.remove('leaving'), 2200);
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('active');
+            }, 7000);
+        }
+
+        // Helper to build a message with a single highlighted span
+        function buildMessage(parent, before, strongText, after) {
+            parent.textContent = '';
+            if (before) parent.appendChild(document.createTextNode(before));
+            if (strongText) {
+                const s = document.createElement('strong');
+                s.textContent = strongText;
+                parent.appendChild(s);
+            }
+            if (after) parent.appendChild(document.createTextNode(after));
+        }
+
+        // Populate recap slide if they came from the feed
+        const scrollTime = sessionStorage.getItem('scrollTime');
+        const scrollPosts = sessionStorage.getItem('scrollPosts');
+
+        if (scrollTime && scrollPosts) {
+            const seconds = Number.parseInt(scrollTime, 10);
+            const posts = Number.parseInt(scrollPosts, 10);
+            const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+            const secs = String(seconds % 60).padStart(2, '0');
+
+            document.getElementById('recap-label-text').textContent = 'your scroll session';
+            document.getElementById('recap-time').textContent = mins + ':' + secs;
+            document.getElementById('recap-posts').textContent = String(posts);
+            document.getElementById('recap-grid-wrap').style.display = '';
+
+            const headlineEl = document.getElementById('recap-headline');
+            const msgEl = document.getElementById('recap-message');
+
+            if (seconds < 30) {
+                headlineEl.textContent = 'You got out fast.';
+                buildMessage(msgEl, 'Most people do not. That takes ', 'awareness', ' — the exact thing these feeds are designed to strip from you.');
+            } else if (seconds < 120) {
+                headlineEl.textContent = 'That was ' + seconds + ' seconds. For nothing.';
+                buildMessage(msgEl, 'A minute or two does not sound like much. But multiply it by every time you pick up the phone today.', '', '');
+            } else if (seconds < 300) {
+                headlineEl.textContent = 'You just lost ' + Math.floor(seconds / 60) + ' minutes.';
+                buildMessage(msgEl, 'Scrolling through content you will not remember tomorrow. That is the trade you made.', '', '');
+            } else {
+                headlineEl.textContent = Math.floor(seconds / 60) + ' minutes gone.';
+                buildMessage(msgEl, 'You read the data. You read the opinion. And you ', 'still kept scrolling', '. That is the problem this site is about.');
+            }
+
+            sessionStorage.removeItem('scrollTime');
+            sessionStorage.removeItem('scrollPosts');
+        }
+
+        // Fade-swap logic (mirrors opinion page)
+        const purposeSlides = document.querySelectorAll('.purpose-fade .purpose-slide');
+        const purposeProgress = document.getElementById('purpose-progress');
+        const hero = document.querySelector('.hero');
+        const nav = document.querySelector('.top-nav');
+
+        function syncHeights() {
+            document.documentElement.style.setProperty('--hero-height', hero.offsetHeight + 'px');
+            document.documentElement.style.setProperty('--nav-height', nav.offsetHeight + 'px');
+        }
+        syncHeights();
+        window.addEventListener('resize', syncHeights);
+
+        purposeSlides.forEach(() => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            purposeProgress.appendChild(dot);
+        });
+        const purposeDots = purposeProgress.querySelectorAll('.dot');
+
+        function updatePurposeActive() {
+            let activeIdx = 0;
+            purposeSlides.forEach((s, i) => {
+                const rect = s.getBoundingClientRect();
+                if (rect.top <= 1 && rect.bottom > 1) {
+                    activeIdx = i;
+                }
+            });
+            purposeSlides.forEach((s, i) => s.classList.toggle('active', i === activeIdx));
+            purposeDots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+            purposeProgress.style.opacity = '1';
+        }
+
+        window.addEventListener('scroll', updatePurposeActive, { passive: true });
+        window.addEventListener('resize', updatePurposeActive);
+        updatePurposeActive();
+    </script>
+</body>
+</html>

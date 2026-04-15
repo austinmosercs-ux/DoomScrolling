@@ -1,30 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('base.css');
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+.hero-intro {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--gray);
+    margin-top: 16px;
 }
 
-:root {
-    --bg: #111;
-    --white: #ddd;
-    --accent: #8ab4f8;
-    --gray: #999;
-    --dark: #1a1a1a;
-    --font: 'Inter', system-ui, sans-serif;
-}
-
-body {
-    background: var(--bg);
-    color: var(--white);
-    font-family: var(--font);
-    font-size: 16px;
-    line-height: 1.8;
-}
-
+/* ── Data/Stats Page Specific ── */
 .page-container {
     max-width: 620px;
     margin: 0 auto;
@@ -218,34 +201,4 @@ body {
 
 .sources-list li a:hover {
     text-decoration: underline;
-}
-
-/* Bottom nav */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
-    background: var(--bg);
-    border-top: 1px solid #2a2a2a;
-}
-
-.btn-nav {
-    font-family: var(--font);
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: var(--gray);
-    text-decoration: none;
-    border: 1px solid #333;
-    padding: 8px 16px;
-    border-radius: 4px;
-}
-
-.btn-nav:hover {
-    color: var(--white);
-    border-color: var(--white);
 }

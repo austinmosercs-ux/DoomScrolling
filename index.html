@@ -4,106 +4,213 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>doomscrolling</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="src/styles/shared.css">
+    <link rel="stylesheet" href="src/styles/index.css">
+    <style>
+        .hero {
+            position: sticky;
+            top: var(--nav-height, 45px);
+            z-index: 50;
+            margin-bottom: 0;
+        }
+        .top-nav { z-index: 100; }
+
+        .research-fade { position: relative; }
+        .research-fade .research-slide { height: 100vh; }
+        .research-fade .slide-inner {
+            position: fixed;
+            top: calc(var(--hero-height, 340px) + 120px);
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 620px;
+            width: calc(100% - 48px);
+            padding: 0 24px;
+            opacity: 0;
+            visibility: hidden;
+            filter: blur(14px);
+            transition: opacity 1.4s ease, visibility 1.4s, filter 1.4s ease;
+            pointer-events: none;
+            z-index: 2;
+            color: var(--white);
+            text-align: left;
+        }
+        .research-fade .research-slide.active .slide-inner {
+            opacity: 1;
+            visibility: visible;
+            filter: blur(0);
+            pointer-events: auto;
+        }
+        .slide-stat {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #fff;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        .slide-line {
+            font-size: 1.1rem;
+            color: var(--white);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .slide-source {
+            font-size: 0.8rem;
+            color: var(--gray);
+            letter-spacing: 0.05em;
+        }
+        .slide-source a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .slide-source a:hover { text-decoration: underline; }
+
+        .research-progress {
+            position: fixed;
+            top: 50%;
+            right: 24px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 60;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .research-progress .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #444;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .research-progress .dot.active {
+            background: var(--accent);
+            transform: scale(1.6);
+        }
+    </style>
 </head>
 <body>
 
+    <nav class="top-nav">
+        <a href="index.html" class="nav-link active">home</a>
+        <a href="src/pages/opinion.html" class="nav-link">my opinion</a>
+        <a href="src/pages/doomscrolling.html" class="nav-link">start scrolling</a>
+        <a href="src/pages/purpose.html" class="nav-link">purpose</a>
+    </nav>
+
     <div class="hero">
         <div class="logo-slideshow">
-            <img src="logo/tictok.png" alt="TikTok" class="slide active">
-            <img src="logo/instagram.png" alt="Instagram" class="slide">
-            <img src="logo/youtube.png" alt="YouTube" class="slide">
-            <img src="logo/x.png" alt="x" class="slide">
-            <img src="logos/facebook.png" alt="facebook" class="slide">
+            <img src="assets/logos/tictok.png" alt="TikTok" class="slide active">
+            <img src="assets/logos/instagram.png" alt="Instagram" class="slide">
+            <img src="assets/logos/youtube.png" alt="YouTube" class="slide">
+            <img src="assets/logos/x.png" alt="x" class="slide">
+            <img src="assets/logos/facebook.png" alt="facebook" class="slide">
         </div>
         <div class="hero-content">
-            <div class="top-label">pov: you're doing this right now</div>
             <h1>doomscrolling</h1>
+            <p class="hero-intro">You know it wastes your time. Here is how much.</p>
         </div>
     </div>
 
-    <div class="page">
+    <div class="research-fade" id="research">
 
-        <div class="callout">
-            "just gonna check my phone real quick"
-            <span class="callout-sub">— you, right before losing an hour</span>
+        <div class="research-slide">
+            <div class="slide-inner">
+                <div class="slide-stat">2 hours, 23 minutes.</div>
+                <p class="slide-line">That is how long the average person spends on social media every day. Over a year, that adds up to <strong>36 full days</strong> of your life. Scrolling.</p>
+                <div class="slide-source"><a href="https://datareportal.com/reports/digital-2024-global-overview-report" target="_blank" rel="noopener">DataReportal — Digital 2024</a></div>
+            </div>
         </div>
 
-        <div class="essay">
-
-            <p>
-                I honestly think doomscrolling is just a huge waste of time. You can start anywhere. In class, laying in bed,
-                waiting for something, or just checking your phone for a second. Then somehow an hour is gone and you do not
-                even know how it happened. Most of the time you do not notice it starting. It just kind of pulls you in. To me,
-                doomscrolling is constantly looking through negative or dramatic stuff online, even when you know it is not really
-                helping you. It is not always intentional either. Sometimes you are bored. Sometimes you are avoiding something.
-                Sometimes it is just automatic.
-            </p>
-
-            <p>
-                It feels addicting because apps are built to keep you there. TikTok, Instagram, Twitter, YouTube, they all have
-                endless feeds. And now even apps that did not used to have that kind of layout are adding it. There is no real
-                stopping point. The next post just loads. The next video just plays. You do not even have to press anything. On
-                top of that, there is always that feeling like you might miss something if you stop. Even if it is not important, it
-                feels important in the moment. That mix of endless content and curiosity makes it really easy to just keep going.
-            </p>
-
-            <div class="inline-meme">ngl this paragraph is literally you</div>
-
-            <p>
-                For me, doomscrolling usually ends with regret. I tell myself I am just taking a quick break from homework, but
-                that quick break turns into something way longer. At first it feels fine. Maybe even relaxing. But then it shifts.
-                I start feeling stressed or annoyed at myself for wasting time. It goes from fun to frustrating without me really
-                noticing when it changed. And I feel like a lot of people probably relate to that switch.
-            </p>
-
-            <p>
-                It definitely messes with my productivity. Even when the content is not that interesting, I keep scrolling because
-                maybe the next thing will be better. It completely breaks my focus. Then when I finally stop, it feels like my brain
-                needs a minute to reset before I can actually get back into working mode. And if that keeps happening every day, it
-                adds up. A few minutes here and there turns into hours over time.
-            </p>
-
-            <p>
-                Not everyone doomscrolls the same way. Some people get pulled into dramatic or negative content faster,
-                especially if they are already stressed. Other people can just close the app and move on. For me it kind of depends
-                on how I am feeling that day. Sometimes I can stop easily. Other times I just keep going. So I do not think it is
-                only about the apps. It is also about how you are feeling when you open them.
-            </p>
-
-            <p>
-                It is hard to stop because everything feels personalized. The app learns what you like and keeps showing you more
-                of it. So right when you are about to close it, something catches your attention again. It almost feels automatic
-                after a while. There is no real ending, no final page, nothing that signals you are done. The feed just keeps going.
-                And because of that, it always feels like there is one more thing worth seeing.
-            </p>
-
-            <p>
-                Doomscrolling feels like a cycle. You start because you are bored or avoiding something. You stay because it is
-                entertaining. You stop feeling guilty. Then the next day you do it again. It repeats, but it always feels slightly
-                different because the posts and images change. That is what makes it tricky. It feels new every time, but it is
-                really the same behavior over and over again.
-            </p>
-
+        <div class="research-slide">
+            <div class="slide-inner">
+                <div class="slide-stat">Your brain is being hacked.</div>
+                <p class="slide-line">Social media platforms are engineered by teams of psychologists to keep you scrolling. Infinite scroll, autoplay, notifications — <strong>none of it is accidental</strong>.</p>
+                <div class="slide-source"><a href="https://www.health.harvard.edu/mind-and-mood/doomscrolling-dangers" target="_blank" rel="noopener">Harvard Health — 2024</a></div>
+            </div>
         </div>
 
-        <div class="bottom-cta">
-            <p class="cta-label">okay but wanna see what it actually looks like?</p>
-            <a href="doomscrolling.html" class="next-btn">start scrolling →</a>
+        <div class="research-slide">
+            <div class="slide-inner">
+                <div class="slide-stat">You already knew it was bad. You kept scrolling anyway.</div>
+                <p class="slide-line">That is not weakness — that is by design. The same <strong>dopamine loop</strong> that drives gambling addiction drives your feed.</p>
+                <div class="slide-source"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10074257/" target="_blank" rel="noopener">NIH — 2022</a></div>
+            </div>
+        </div>
+
+        <div class="research-slide">
+            <div class="slide-inner">
+                <div class="slide-stat">The news isn't making you informed. It's making you anxious.</div>
+                <p class="slide-line">Studies show the more you consume, the worse you feel — yet the algorithm keeps serving you <strong>more of exactly what's hurting you</strong>.</p>
+                <div class="slide-source"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9580444/" target="_blank" rel="noopener">Applied Research in Quality of Life — 2023</a></div>
+            </div>
+        </div>
+
+        <div class="research-slide">
+            <div class="slide-inner">
+                <div class="bottom-cta" style="border: none; margin: 0;">
+                    <p class="cta-label">want to hear a personal take on this?</p>
+                    <a href="src/pages/opinion.html" class="next-btn">read my opinion &rarr;</a>
+                </div>
+            </div>
         </div>
 
     </div>
+
+    <div class="research-progress" id="research-progress"></div>
+
 
     <script>
         const slides = document.querySelectorAll('.logo-slideshow .slide');
         if (slides.length > 0) {
             let current = 0;
             setInterval(() => {
-                slides[current].classList.remove('active');
+                const prev = slides[current];
+                prev.classList.remove('active');
+                prev.classList.add('leaving');
+                setTimeout(() => prev.classList.remove('leaving'), 2200);
                 current = (current + 1) % slides.length;
                 slides[current].classList.add('active');
-            }, 1800);
+            }, 7000);
         }
+
+        // Fade-swap research
+        const researchSlides = document.querySelectorAll('.research-fade .research-slide');
+        const researchProgress = document.getElementById('research-progress');
+        const hero = document.querySelector('.hero');
+        const nav = document.querySelector('.top-nav');
+
+        function syncHeights() {
+            document.documentElement.style.setProperty('--hero-height', hero.offsetHeight + 'px');
+            document.documentElement.style.setProperty('--nav-height', nav.offsetHeight + 'px');
+        }
+        syncHeights();
+        window.addEventListener('resize', syncHeights);
+
+        researchSlides.forEach(() => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            researchProgress.appendChild(dot);
+        });
+        const researchDots = researchProgress.querySelectorAll('.dot');
+
+        function updateResearchActive() {
+            let activeIdx = 0;
+            researchSlides.forEach((s, i) => {
+                const rect = s.getBoundingClientRect();
+                if (rect.top <= 1 && rect.bottom > 1) {
+                    activeIdx = i;
+                }
+            });
+            researchSlides.forEach((s, i) => s.classList.toggle('active', i === activeIdx));
+            researchDots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+            researchProgress.style.opacity = '1';
+        }
+
+        window.addEventListener('scroll', updateResearchActive, { passive: true });
+        window.addEventListener('resize', updateResearchActive);
+        updateResearchActive();
     </script>
 </body>
 </html>

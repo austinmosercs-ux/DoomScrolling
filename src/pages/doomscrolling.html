@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>keep scrolling</title>
+    <link rel="stylesheet" href="../styles/doomscrolling.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="../../index.html" class="nav-link">home</a>
+        <a href="opinion.html" class="nav-link">my opinion</a>
+        <a href="doomscrolling.html" class="nav-link active">start scrolling</a>
+        <a href="purpose.html" class="nav-link">purpose</a>
+    </nav>
+
+    <div class="scroll-timer" id="scroll-timer">00:00</div>
+
+    <div class="feed" id="feed"></div>
+    <div class="sentinel" id="sentinel"></div>
+
+    <button class="stop-scrolling" id="stop-btn">stop scrolling</button>
+
+    <script src="../js/data.js"></script>
+    <script src="../js/meme-api.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/posts.js"></script>
+    <script src="../js/feed.js"></script>
+    <script>
+        // Scroll timer
+        const timerEl = document.getElementById('scroll-timer');
+        const timerStart = Date.now();
+
+        setInterval(() => {
+            const elapsed = Math.floor((Date.now() - timerStart) / 1000);
+            const mins = String(Math.floor(elapsed / 60)).padStart(2, '0');
+            const secs = String(elapsed % 60).padStart(2, '0');
+            timerEl.textContent = mins + ':' + secs;
+
+            if (elapsed >= 300) {
+                timerEl.className = 'scroll-timer danger';
+            } else if (elapsed >= 120) {
+                timerEl.className = 'scroll-timer warn';
+            }
+        }, 1000);
+
+        // Stop scrolling button — appears after 20 posts
+        const stopBtn = document.getElementById('stop-btn');
+        let stopShown = false;
+
+        const checkPosts = setInterval(() => {
+            if (totalPosts >= 20 && !stopShown) {
+                stopBtn.classList.add('visible');
+                stopShown = true;
+                clearInterval(checkPosts);
+            }
+        }, 1000);
+
+        stopBtn.addEventListener('click', () => {
+            // Save stats so the purpose page can show them
+            const elapsed = Math.floor((Date.now() - timerStart) / 1000);
+            sessionStorage.setItem('scrollTime', String(elapsed));
+            sessionStorage.setItem('scrollPosts', String(totalPosts));
+            globalThis.location.href = 'purpose.html';
+        });
+    </script>
+</body>
+</html>
